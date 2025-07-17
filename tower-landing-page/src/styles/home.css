@@ -796,7 +796,7 @@ body.no-scroll {
 .footer .container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
   align-items: flex-start;
   max-width: 1200px;
   margin: 0 auto;
@@ -810,7 +810,7 @@ body.no-scroll {
   margin-bottom: var(--spacing-xl);
   flex: 1;
   min-width: 220px;
-  text-align: left;
+  text-align: center;
 }
 
 .footer-brand img {
@@ -851,6 +851,7 @@ body.no-scroll {
   transition: var(--transition-default);
   display: inline-flex;
   align-items: center;
+  justify-content: center;
 }
 
 .footer-nav a:hover,
@@ -863,7 +864,7 @@ body.no-scroll {
   font-size: var(--font-size-small);
   color: var(--color-light-text-tertiary);
   margin-bottom: var(--spacing-medium);
-  text-align: left;
+  text-align: center;
 }
 
 .social-links i {
@@ -1043,27 +1044,24 @@ body.no-scroll {
     font-size: var(--font-size-medium);
   }
 
-  /* Footer adjustments for smaller screens */
   .footer .container {
-    flex-direction: column; /* Empilha os blocos do rodapé */
-    align-items: center; /* Centraliza os itens empilhados */
-    text-align: center; /* Centraliza o texto */
-    gap: var(--spacing-xl); /* Reduz o espaçamento entre os blocos empilhados */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--spacing-xl);
   }
 
   .footer-brand,
   .footer-nav,
   .social-links {
-    text-align: center; /* Centraliza o texto dentro de cada bloco no mobile */
-    min-width: unset; /* Remove a largura mínima */
-    width: 100%; /* Ocupa a largura total disponível */
+    text-align: center;
+    min-width: unset;
+    width: 100%;
   }
 
   .footer-nav ul,
   .social-links ul {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centraliza os itens da lista */
+    align-items: center;
   }
 }
 
