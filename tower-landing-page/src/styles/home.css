@@ -67,7 +67,6 @@
   --transition-slow: 0.3s ease-out; /* Para before dos cards */
   --transition-card-hover: 0.6s ease; /* Nova variável para transição dos cards no hover */
 
-
   /* Line Heights */
   --line-height-tight: 1.1;
   --line-height-normal: 1.2;
@@ -91,7 +90,7 @@ html, body {
 
 .landing-page {
   font-family: 'Saira', sans-serif;
-  color: var(--color-dark-background);
+  color: var(--color-dark-background); /* Isso provavelmente precisaria ser ajustado ou herdado de um elemento pai para que o texto do body fique visível */
 }
 
 body.no-scroll {
@@ -787,6 +786,130 @@ body.no-scroll {
   height: 100%;
 }
 
+.footer {
+  background-color: var(--color-dark-background);
+  color: var(--color-light-text-primary);
+  padding: var(--spacing-4xl) var(--spacing-large);
+  text-align: center;
+}
+
+.footer .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: var(--spacing-xxl);
+  padding-bottom: var(--spacing-xxl);
+}
+
+.footer-brand,
+.footer-nav,
+.social-links {
+  margin-bottom: var(--spacing-xl);
+  flex: 1;
+  min-width: 220px;
+  text-align: left;
+}
+
+.footer-brand img {
+  margin-bottom: var(--spacing-medium);
+}
+
+.footer-brand p {
+  font-size: var(--font-size-small);
+  color: var(--color-light-text-tertiary);
+  line-height: var(--line-height-normal);
+}
+
+.footer-nav h3,
+.social-links h3 {
+  font-size: var(--font-size-large);
+  color: var(--color-company);
+  margin-bottom: var(--spacing-medium);
+  font-weight: var(--font-weight-semibold);
+}
+
+.footer-nav ul,
+.social-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-nav li,
+.social-links li {
+  margin-bottom: var(--spacing-xs);
+}
+
+.footer-nav a,
+.social-links a {
+  color: var(--color-light-text-secondary);
+  text-decoration: none;
+  font-size: var(--font-size-small);
+  transition: var(--transition-default);
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-nav a:hover,
+.social-links a:hover {
+  color: var(--color-company);
+  transform: translateX(5px);
+}
+
+.social-links p {
+  font-size: var(--font-size-small);
+  color: var(--color-light-text-tertiary);
+  margin-bottom: var(--spacing-medium);
+  text-align: left;
+}
+
+.social-links i {
+  margin-right: var(--spacing-xs);
+  color: var(--color-light-text-secondary);
+}
+
+
+.footer-bottom {
+  border-top: 1px solid var(--color-border-line);
+  padding-top: var(--spacing-xl);
+  margin-top: var(--spacing-xl);
+  color: var(--color-light-text-tertiary);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-normal);
+  text-align: center;
+}
+
+.footer-bottom p {
+  margin-bottom: var(--spacing-xxs);
+}
+
+.footer-bottom a {
+  color: var(--color-light-text-secondary);
+  text-decoration: none;
+  margin: 0 var(--spacing-xs);
+  transition: var(--transition-default);
+}
+
+.footer-bottom a:hover {
+  text-decoration: underline;
+  color: var(--color-company);
+}
+
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
 
 /* MEDIA QUERIES */
 
@@ -918,6 +1041,29 @@ body.no-scroll {
 
   .portfolio-description {
     font-size: var(--font-size-medium);
+  }
+
+  /* Footer adjustments for smaller screens */
+  .footer .container {
+    flex-direction: column; /* Empilha os blocos do rodapé */
+    align-items: center; /* Centraliza os itens empilhados */
+    text-align: center; /* Centraliza o texto */
+    gap: var(--spacing-xl); /* Reduz o espaçamento entre os blocos empilhados */
+  }
+
+  .footer-brand,
+  .footer-nav,
+  .social-links {
+    text-align: center; /* Centraliza o texto dentro de cada bloco no mobile */
+    min-width: unset; /* Remove a largura mínima */
+    width: 100%; /* Ocupa a largura total disponível */
+  }
+
+  .footer-nav ul,
+  .social-links ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza os itens da lista */
   }
 }
 
@@ -1246,5 +1392,23 @@ body.no-scroll {
 
   .portfolio-videos-title {
     font-size: var(--font-size-4xl);
+  }
+
+  /* Footer specific adjustments for smallest screens */
+  .footer .container {
+    padding: var(--spacing-xl) var(--spacing-small) var(--spacing-medium);
+    gap: var(--spacing-medium);
+  }
+
+  .footer-brand,
+  .footer-nav,
+  .social-links {
+    margin-bottom: var(--spacing-medium);
+  }
+
+  .footer-bottom {
+    padding-top: var(--spacing-large);
+    margin-top: var(--spacing-large);
+    font-size: var(--font-size-xxs);
   }
 }
