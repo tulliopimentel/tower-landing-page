@@ -179,7 +179,41 @@
             </div>
         </div>
       </section>
-    </main>
+
+      <section class="testimonials-section" id="testimonials" aria-labelledby="testimonials-title">
+        <p class="section-tag">/ O QUE DIZEM NOSSOS CLIENTES /</p>
+        <h2 id="testimonials-title" class="section-title">
+          Vozes que <span class="highlight">inspiram</span>: Depoimentos de quem já colhe resultados com a Tower Studio.
+        </h2>
+        <swiper-container
+          :slides-per-view="testimonialsSwiperOptions.slidesPerView"
+          :space-between="testimonialsSwiperOptions.spaceBetween"
+          :loop="testimonialsSwiperOptions.loop"
+          :autoplay="testimonialsSwiperOptions.autoplay"
+          :pagination="testimonialsSwiperOptions.pagination"
+          :navigation="testimonialsSwiperOptions.navigation"
+          :grab-cursor="true"
+          class="testimonials-carousel"
+          aria-live="polite"
+        >
+          <swiper-slide v-for="(testimonial, index) in testimonials" :key="index">
+            <article class="testimonial-card">
+              <div class="testimonial-header">
+                <img :src="testimonial.avatar" :alt="testimonial.name" class="testimonial-avatar" loading="lazy" width="80" height="80" />
+                <div class="testimonial-info">
+                  <h3 class="testimonial-name">{{ testimonial.name }}</h3>
+                  <p class="testimonial-role">{{ testimonial.role }}</p>
+                </div>
+              </div>
+              <p class="testimonial-text">{{ testimonial.text }}</p>
+              <div class="testimonial-rating">
+                <span v-for="star in testimonial.rating" :key="star" class="star">&#9733;</span>
+              </div>
+            </article>
+          </swiper-slide>
+        </swiper-container>
+      </section>
+      </main>
 
     <footer class="footer" aria-labelledby="footer-heading">
       <h2 id="footer-heading" class="sr-only">Informações de Contato e Navegação do Rodapé</h2>
@@ -208,7 +242,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; {{ new Date().getFullYear() }} Tower Studio. Todos os direitos reservados.</p>
+        <p>© {{ new Date().getFullYear() }} Tower Studio. Todos os direitos reservados.</p>
       </div>
     </footer>
   </div>
@@ -324,6 +358,37 @@ export default defineComponent({
       { image: new URL('@/assets/vivo_cliente.jpg', import.meta.url).href, alt: 'Vivo - Empresa de Telecomunicações', name: 'Vivo' },
     ];
 
+    const testimonials = [
+      {
+        name: "Cláudio Junior",
+        role: "YouTuber e Influencer",
+        avatar: new URL('@/assets/avatar-claudio.jpg', import.meta.url).href, // Substitua pelo caminho da imagem
+        text: "A Tower Studio transformou meus vídeos! A edição é impecável, com cortes que dão um ritmo incrível e efeitos que elevam a qualidade. Meus inscritos notaram a diferença, e o engajamento disparou. Recomendo demais para quem quer profissionalizar seu conteúdo!",
+        rating: 5
+      },
+      {
+        name: "Beatriz Costa",
+        role: "CEO, Startup Tech",
+        avatar: new URL('@/assets/avatar-beatriz.jpg', import.meta.url).href, // Substitua pelo caminho da imagem
+        text: "Precisávamos de motion graphics que realmente transmitissem a inovação da nossa startup. A equipe da Tower Studio superou todas as expectativas! Criaram animações dinâmicas e claras que explicam nosso produto de forma genial. Profissionais e criativos!",
+        rating: 5
+      },
+      {
+        name: "Lucas Mendes",
+        role: "Criador de Conteúdo Fitness",
+        avatar: new URL('@/assets/avatar-lucas.jpg', import.meta.url).href, // Substitua pelo caminho da imagem
+        text: "Com a Tower Studio, pude focar na gravação enquanto eles cuidavam de toda a pós-produção. O resultado? Vídeos com qualidade cinematográfica, que me posicionaram como autoridade no meu nicho. Se você busca excelência em edição, não procure mais!",
+        rating: 4
+      },
+      {
+        name: "Isabela Oliveira",
+        role: "Marketing Manager, E-commerce",
+        avatar: new URL('@/assets/avatar-isabela.jpg', import.meta.url).href, // Substitua pelo caminho da imagem
+        text: "O planejamento estratégico de vídeo da Tower Studio foi um divisor de águas para nossa campanha. Eles entenderam perfeitamente nossos objetivos e entregaram um roteiro que converteu muito. Além da edição de altíssimo nível, o suporte e a comunicação são excelentes.",
+        rating: 5
+      }
+    ];
+
     const swiperOptions = {
       slidesPerView: 5,
       spaceBetween: 30,
@@ -376,12 +441,46 @@ export default defineComponent({
       },
     };
 
+    const testimonialsSwiperOptions = {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 30,
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        0: {
+          slidesPerView: 1,
+          spaceBetween: 10,
+        },
+      },
+    };
+
     return {
       isMenuOpen,
       toggleMenu,
       closeMenu,
       people,
       swiperOptions,
+      testimonials, // Adicione os depoimentos
+      testimonialsSwiperOptions, // Adicione as opções do Swiper para depoimentos
       portfolioTitle,
       parallaxTitleWrapper
     };
