@@ -1,6 +1,7 @@
 html, body {
   overflow-x: hidden;
   padding-top: 105px;
+  scroll-behavior: smooth;
 }
 
 *,
@@ -238,7 +239,7 @@ body.no-scroll {
 }
 
 .impact-card {
-  background-color: #1E1E24;
+  background-color: #26262e;
   border-radius: 10px;
   padding: 25px 30px;
   text-align: center;
@@ -361,10 +362,11 @@ body.no-scroll {
   font-size: 0.9em;
   color: #eee;
   font-weight: 500;
-  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
   max-width: 100%;
+  white-space: normal;
+  word-wrap: break-word;
+  height: auto;
 }
 
 .swiper-slide {
@@ -409,6 +411,123 @@ body.no-scroll {
 .logos-carousel .swiper-pagination-bullet-active {
   background: #ff6666;
   opacity: 1;
+}
+
+/* NOVA SEÇÃO: SERVIÇOS */
+.services-section {
+  background-color: #1E1E24;
+  color: #f0f0f0;
+  padding: 80px 20px;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.services-section .section-tag {
+  font-size: 0.9em;
+  color: #ff6666;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  font-weight: 600;
+  display: block;
+}
+
+.services-section .section-title {
+  font-size: 3.5em;
+  margin-bottom: 50px;
+  font-weight: 700;
+  color: #f0f0f0;
+  line-height: 1.2;
+}
+
+.services-section .highlight-alt {
+  background-color: #ff6666;
+  padding: 0 10px;
+  border-radius: 4px;
+  line-height: 1.2;
+  display: inline-block;
+  color: #fff;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  justify-content: center;
+}
+
+.service-card {
+  background-color: #26262e;
+  border-radius: 10px;
+  padding: 30px;
+  text-align: left;
+  color: #f0f0f0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 200px;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: #ff6666;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-out;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+  background-color: #353535;
+}
+
+.service-card:hover::before {
+  transform: translateY(0);
+}
+
+.service-card-title {
+  font-size: 1.8em;
+  font-weight: 600;
+  color: #ff6666;
+  margin-bottom: 15px;
+  line-height: 1.2;
+}
+
+.service-card-description {
+  font-size: 1em;
+  color: #d0d0d0;
+  line-height: 1.6;
+}
+
+.service-card-description .highlight-small {
+  background-color: #ff6666;
+  padding: 0 6px;
+  border-radius: 3px;
+  line-height: 1.2;
+  display: inline-block;
+  color: #fff;
+}
+
+@media (min-width: 1200px) {
+  .services-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .service-card {
+    max-width: none;
+  }
 }
 
 @media (max-width: 992px) {
@@ -468,6 +587,30 @@ body.no-scroll {
 
   .impact-description {
     font-size: 1em;
+  }
+
+  .services-section .section-title {
+    font-size: 2.8em;
+    margin-bottom: 40px;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .service-card {
+    min-width: unset;
+    max-width: none;
+    padding: 25px;
+  }
+
+  .service-card-title {
+    font-size: 1.6em;
+  }
+
+  .service-card-description {
+    font-size: 0.95em;
   }
 }
 
@@ -629,6 +772,36 @@ body.no-scroll {
   .impact-description {
     font-size: 1em;
   }
+
+  .services-section {
+    padding: 60px 20px;
+  }
+
+  .services-section .section-title {
+    font-size: 2.2em;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .service-card {
+    max-width: 350px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    min-height: 180px;
+  }
+
+  .service-card-title {
+    font-size: 1.5em;
+  }
+
+  .service-card-description {
+    font-size: 0.9em;
+  }
 }
 
 @media (max-width: 480px) {
@@ -712,5 +885,17 @@ body.no-scroll {
 
   .impact-description {
     font-size: 0.9em;
+  }
+
+  .services-section .section-title {
+    font-size: 1.8em;
+  }
+
+  .service-card-title {
+    font-size: 1.3em;
+  }
+
+  .service-card-description {
+    font-size: 0.85em;
   }
 }

@@ -60,7 +60,7 @@
         </div>
       </div>
       <div class="company-logos">
-        <p>Parceiros que brilham: Conheça quem já confia em nosso trabalho</p>
+        <p>Parceiros que brilham: Conheça alguns que confiam em nosso trabalho. E muito mais!</p>
         <swiper-container
           :slides-per-view="swiperOptions.slidesPerView"
           :space-between="swiperOptions.spaceBetween"
@@ -82,11 +82,44 @@
           </swiper-slide>
         </swiper-container>
       </div>
-    </main>
+
+      <section class="services-section" id="services">
+        <p class="section-tag">/ SERVIÇOS /</p> <h2 class="section-title">
+          Soluções <span class="highlight-alt">completas</span> para o seu conteúdo, do conceito à entrega.
+        </h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <h3 class="service-card-title">Edição de Vídeo</h3>
+            <p class="service-card-description">
+              Transformamos suas ideias em narrativas visuais <span class="highlight-small">cativantes</span>, com cortes precisos e efeitos impactantes para ser publicado em qualquer formato nas redes sociais.
+            </p>
+          </div>
+          <div class="service-card">
+            <h3 class="service-card-title">Gravações</h3>
+            <p class="service-card-description">
+              Capturamos a <span class="highlight-small">essência</span> da sua mensagem, seja com equipamentos profissionais em solo ou imagens aéreas de drone.
+            </p>
+          </div>
+          <div class="service-card">
+            <h3 class="service-card-title">Motion Graphics & Ilustração</h3>
+            <p class="service-card-description">
+              Damos vida à sua marca com animações e <span class="highlight-small">ilustrações criativas</span>, tornando vídeos complexos em experiências visuais claras.
+            </p>
+          </div>
+          <div class="service-card">
+            <h3 class="service-card-title">Planejamento & Roteiro</h3>
+            <p class="service-card-description">
+              Desenvolvemos o <span class="highlight-small">roteiro</span> ideal e um planejamento estratégico para cada etapa do seu projeto de vídeo, do conceito à entrega final.
+            </p>
+          </div>
+        </div>
+      </section>
+      </main>
   </div>
 </template>
 
 <script>
+// (Seu script existente permanece inalterado)
 import { defineComponent, ref, watch } from 'vue';
 import { register } from 'swiper/element/bundle';
 import 'swiper/css';
@@ -129,11 +162,10 @@ export default defineComponent({
       { image: new URL('@/assets/anna_egreja.jpg', import.meta.url).href, alt: 'Foto Anna Egreja', name: 'Anna Egreja' },
       { image: new URL('@/assets/gorgonoide.jpg', import.meta.url).href, alt: 'Foto Gorgonoide', name: 'Gorgonoid' },
       { image: new URL('@/assets/tinows.jpg', import.meta.url).href, alt: 'Foto Tinows', name: 'Tinowns' },
-      { image: new URL('@/assets/super_xandao.png', import.meta.url).href, alt: 'Foto Super Xandão', name: 'Super Xandão 2' },
-      { image: new URL('@/assets/victor_sarro.png', import.meta.url).href, alt: 'Foto Victor Sarro', name: 'Victor Sarro 2' },
-      { image: new URL('@/assets/anna_egreja.jpg', import.meta.url).href, alt: 'Foto Anna Egreja', name: 'Anna Egreja 2' },
-      { image: new URL('@/assets/gorgonoide.jpg', import.meta.url).href, alt: 'Foto Gorgonoide', name: 'Gorgonoid 2' },
-      { image: new URL('@/assets/tinows.jpg', import.meta.url).href, alt: 'Foto Tinows', name: 'Tinowns 2' },
+      { image: new URL('@/assets/ericat.jpg', import.meta.url).href, alt: 'Foto Ericat', name: 'Ericat' },
+      { image: new URL('@/assets/gabriel_curiosidades.png', import.meta.url).href, alt: 'Foto Gabriel', name: 'Gabriel Chinchilla Curiosidades' },
+      { image: new URL('@/assets/snickers.png', import.meta.url).href, alt: 'Foto Snickers', name: 'Snickers' },
+      { image: new URL('@/assets/vivo_cliente.jpg', import.meta.url).href, alt: 'Foto Vivo', name: 'Vivo' },
     ];
 
     const swiperOptions = {
