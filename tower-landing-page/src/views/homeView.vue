@@ -87,7 +87,6 @@
 </template>
 
 <script>
-// (Seu script existente permanece inalterado)
 import { defineComponent, ref, watch } from 'vue';
 import { register } from 'swiper/element/bundle';
 import 'swiper/css';
@@ -138,11 +137,11 @@ export default defineComponent({
     ];
 
     const swiperOptions = {
-      slidesPerView: 5, // Valor padrão para desktop grande (ajustado para um número fixo)
+      slidesPerView: 5,
       spaceBetween: 30,
       loop: true,
-      allowTouchMove: true, // Reabilitar o toque para que o usuário possa interagir se quiser
-      speed: 10000, // Ajustado para 10 segundos para um movimento mais lento
+      allowTouchMove: true,
+      speed: 10000,
 
       autoplay: {
         delay: 0,
@@ -171,22 +170,20 @@ export default defineComponent({
           spaceBetween: 30,
         },
         992: {
-          slidesPerView: 4, // 4 fotos visíveis
+          slidesPerView: 4,
           spaceBetween: 20,
         },
         768: {
-          slidesPerView: 3, // 3 fotos visíveis
+          slidesPerView: 3,
           spaceBetween: 20,
         },
         576: {
-          slidesPerView: 2, // 2 fotos visíveis
+          slidesPerView: 2,
           spaceBetween: 15,
         },
-        0: { // Para telas muito pequenas (ex: mobile portrait)
-          slidesPerView: 2, // 1 foto inteira + metade da próxima. Isso ajuda a dar a ideia de carrossel.
+        0: {
+          slidesPerView: 2,
           spaceBetween: 0
-          // Se 1.5 ainda estiver quebrando, tente slidesPerView: 1 e veja se o layout fica estável.
-          // Com 1.5, o freeMode é muito importante para a fluidez.
         },
       },
     };
