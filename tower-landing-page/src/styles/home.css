@@ -1101,7 +1101,7 @@ body.no-scroll {
     right: 0;
     width: 50vw;
     height: 100vh;
-    background-color: var(--color-mobile-menu-background);
+    background-color: var(--color-dark-background);
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
     transition: var(--transition-default);
     z-index: 1000;
