@@ -40,8 +40,27 @@
           <img src="@/assets/TOWER-PERFIL.png" alt="Imagem da Torre Perfil" />
         </div>
       </div>
+
+      <div class="impact-cards">
+        <div class="impact-card">
+          <span class="impact-number">+100 Milhões</span>
+          <span class="impact-description">de visualizações</span>
+        </div>
+        <div class="impact-card">
+          <span class="impact-number">+1000</span>
+          <span class="impact-description">vídeos editados</span>
+        </div>
+        <div class="impact-card">
+          <span class="impact-number">+50</span>
+          <span class="impact-description">clientes satisfeitos</span>
+        </div>
+          <div class="impact-card">
+          <span class="impact-number">+4 anos</span>
+          <span class="impact-description">de mercado</span>
+        </div>
+      </div>
       <div class="company-logos">
-        <p>Escolhida por diversos influencers e youtubers</p>
+        <p>Parceiros que brilham: Conheça quem já confia em nosso trabalho</p>
         <swiper-container
           :slides-per-view="swiperOptions.slidesPerView"
           :space-between="swiperOptions.spaceBetween"
@@ -62,12 +81,13 @@
             </div>
           </swiper-slide>
         </swiper-container>
-        </div>
+      </div>
     </main>
   </div>
 </template>
 
 <script>
+// (Seu script existente permanece inalterado)
 import { defineComponent, ref, watch } from 'vue';
 import { register } from 'swiper/element/bundle';
 import 'swiper/css';

@@ -226,6 +226,81 @@ body.no-scroll {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
+/* IMPACT CARDS SECTION - SIMPLIFICADO COM LINHA NO HOVER */
+.impact-cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px; /* Espaçamento entre os cards */
+  width: 100%;
+  max-width: 1200px;
+  margin: 50px auto; /* Margem superior e inferior para separar das outras seções */
+  padding: 20px;
+  box-sizing: border-box;
+  flex-wrap: wrap; /* Permite que os cards quebrem para a próxima linha em telas menores */
+}
+
+.impact-card {
+  background-color: #2a2a2a; /* Cor de fundo sólida e mais discreta */
+  border-radius: 10px; /* Bordas um pouco menos arredondadas */
+  padding: 25px 30px; /* Ajuste no padding */
+  text-align: center;
+  color: #f0f0f0;
+  flex: 1;
+  min-width: 250px;
+  max-width: 350px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra mais sutil */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Transição para hover e background */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* Necessário para o pseudo-elemento */
+  overflow: hidden; /* Garante que a linha ::before fique escondida inicialmente */
+}
+
+.impact-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: #ff6666; /* Linha superior colorida */
+  border-top-left-radius: 10px; /* Ajustado para borda do card */
+  border-top-right-radius: 10px; /* Ajustado para borda do card */
+  transform: translateY(-100%); /* Escondido inicialmente */
+  transition: transform 0.3s ease-out; /* Transição para a linha */
+}
+
+.impact-card:hover {
+  transform: translateY(-8px) scale(1.02); /* Mantém o efeito de "lift" e scale no hover */
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5); /* Sombra mais intensa no hover */
+  background-color: #353535; /* Um leve escurecimento no hover para feedback visual */
+}
+
+.impact-card:hover::before {
+  transform: translateY(0); /* Revela a linha superior no hover */
+}
+
+
+.impact-number {
+  font-size: 3.2em; /* Levemente menor para mais harmonia */
+  font-weight: 700;
+  color: #ff6666; /* Mantém a cor de destaque */
+  margin-bottom: 5px; /* Reduzi a margem inferior */
+  line-height: 1;
+  text-shadow: none; /* Removida a sombra de texto */
+}
+
+.impact-description {
+  font-size: 1.1em; /* Levemente menor para mais harmonia */
+  color: #d0d0d0; /* Cor um pouco mais clara para melhor contraste */
+  line-height: 1.3;
+  font-weight: 400;
+  max-width: 90%;
+  word-break: break-word;
+}
+
 /* COMPANY LOGOS / CAROUSEL SECTION */
 .company-logos {
   width: 100%;
@@ -239,7 +314,7 @@ body.no-scroll {
 }
 
 .company-logos p {
-  font-size: 1.1em;
+  font-size: 1.3em;
   color: #aaa;
   margin-bottom: 20px;
   padding: 0 20px;
@@ -379,6 +454,27 @@ body.no-scroll {
   .logos-carousel .swiper-button-next {
     --swiper-navigation-size: 35px;
   }
+
+  /* Impact Cards Media Query */
+  .impact-cards {
+    gap: 20px;
+    margin: 40px auto; /* Mantido para telas maiores que mobile */
+    padding: 15px;
+  }
+
+  .impact-card {
+    min-width: unset;
+    max-width: 48%; /* Duas colunas em telas médias */
+    padding: 20px; /* Ajustado */
+  }
+
+  .impact-number {
+    font-size: 2.8em; /* Ajustado */
+  }
+
+  .impact-description {
+    font-size: 1em; /* Ajustado */
+  }
 }
 
 @media (max-width: 768px) {
@@ -411,24 +507,22 @@ body.no-scroll {
     position: fixed;
     top: 0;
     right: 0;
-    width: 50vw; /* Mantido para garantir cobertura total da largura da viewport */
-    height: 100vh; /* Mantido para garantir cobertura total da altura da viewport */
+    width: 50vw;
+    height: 100vh;
     background-color: #2a2a2a;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
     z-index: 1000;
     transform: translateX(100%);
-    overflow-y: auto; /* ALTERADO: Permite rolagem vertical se o conteúdo for maior que a tela */
-    overflow-x: hidden; /* Adicionado: Garante que não haja rolagem horizontal */
+    overflow-y: auto;
+    overflow-x: hidden;
 
-    /* ADICIONADO: Flexbox para controlar o alinhamento do conteúdo interno */
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */ /* Removido para que o padding-top funcione melhor no topo */
-    align-items: center; /* Centraliza horizontalmente o conteúdo da lista */
+    align-items: center;
 
-    padding-top: 80px; /* Mantido para dar espaço abaixo do header */
-    padding-bottom: 20px; /* ADICIONADO: Um pouco de padding na parte inferior para respiro */
+    padding-top: 80px;
+    padding-bottom: 20px;
   }
 
   .main-nav.is-open {
@@ -439,17 +533,16 @@ body.no-scroll {
     flex-direction: column;
     gap: 20px;
     text-align: center;
-    padding: 0 20px; /* Mantido padding horizontal */
-    width: 100%; /* Garante que a ul ocupe toda a largura */
-    flex-grow: 1; /* ADICIONADO: Permite que a ul ocupe o espaço restante do flex container */
-    display: flex; /* ADICIONADO: Para que gap funcione corretamente com flex-direction: column */
-    flex-direction: column; /* Mantido para empilhar os itens */
-    justify-content: flex-start; /* ADICIONADO: Para que os itens comecem do topo da área útil da ul */
+    padding: 0 20px;
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
   }
 
   .main-nav li {
     width: 100%;
-    /* Removendo qualquer altura fixa ou máxima para permitir que o conteúdo se ajuste */
     height: auto;
     max-height: none;
   }
@@ -461,7 +554,7 @@ body.no-scroll {
     white-space: normal;
     display: block;
     padding: 10px 0;
-    height: auto; /* Garante que a altura do link se ajuste ao conteúdo */
+    height: auto;
   }
 
   .hero-title {
@@ -519,10 +612,31 @@ body.no-scroll {
   .logos-carousel .swiper-pagination {
     bottom: 5px;
   }
+
+  /* Impact Cards Media Query */
+  .impact-cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin: 30px auto;
+  }
+
+  .impact-card {
+    width: 90%;
+    max-width: 350px;
+    padding: 20px;
+  }
+
+  .impact-number {
+    font-size: 2.5em;
+  }
+
+  .impact-description {
+    font-size: 1em;
+  }
 }
 
 @media (max-width: 480px) {
-  /* Mantendo as mesmas lógicas do 768px para o menu principal */
   .main-nav {
     width: 100vw;
     height: 100vh;
@@ -551,7 +665,7 @@ body.no-scroll {
   }
 
   .main-nav li a {
-    font-size: 1.2em; /* Pode ajustar o tamanho da fonte para telas menores se desejar */
+    font-size: 1.2em;
     padding: 10px 0;
     height: auto;
   }
@@ -587,5 +701,18 @@ body.no-scroll {
 
   .logos-carousel .swiper-pagination {
     bottom: 0px;
+  }
+
+  /* Impact Cards Media Query */
+  .impact-card {
+    padding: 18px;
+  }
+
+  .impact-number {
+    font-size: 2.2em;
+  }
+
+  .impact-description {
+    font-size: 0.9em;
   }
 }
