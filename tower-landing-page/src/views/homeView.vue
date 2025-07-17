@@ -124,13 +124,13 @@
           <div class="about-text">
             <p class="section-tag">/ QUEM SOMOS NÓS /</p>
             <h2 class="section-title">
-              Uma história de <span class="highlight">paixão</span> e superação pelo conteúdo digital.
+              Uma história de <span class="highlight-alt">paixão</span> e superação pelo conteúdo digital.
             </h2>
             <p>
               Nossa jornada não começou em escritórios de luxo, mas nas ruas, observando o mundo sob uma perspectiva única. Foi lá, em meio à resiliência e à criatividade forçada pela necessidade, que percebemos o poder das histórias e como o vídeo poderia amplificá-las. Com uma câmera emprestada e uma paixão ardente por transformar o ordinário em extraordinário, **Maria e João**, como que por obra do destino, se uniram.
             </p>
             <p>
-              De cada dificuldade, tiramos um aprendizado; de cada recurso limitado, uma solução engenhosa. Essa vivência nos ensinou a valorizar a essência, a capturar a verdade e a criar com propósito. Hoje, a Tower Content é o reflexo dessa jornada: uma agência de conteúdo digital que entende a importância de cada história e o impacto real que um vídeo bem feito pode ter.
+              De cada dificuldade, tiramos um aprendizado; de cada recurso limitado, uma solução engenhosa. Essa vivência nos ensinou a valorizar a essência, a capturar a verdade e a criar com propósito. Hoje, a Tower Studio é o reflexo dessa jornada: uma agência de conteúdo digital que entende a importância de cada história e o impacto real que um vídeo bem feito pode ter.
             </p>
             <p>
               Não vendemos apenas vídeos; construímos <span class="highlight-small">pontes</span>, geramos conexões e transformamos sonhos em realidade digital. Sua história merece ser contada com a mesma dedicação e visão que nos trouxeram até aqui.
@@ -138,12 +138,42 @@
           </div>
         </div>
       </section>
+
+      <section class="portfolio-section" id="portfolio">
+        <div class="portfolio-header">
+          <p class="section-tag">/ PORTFÓLIO /</p>
+          <div class="parallax-title-wrapper" ref="parallaxTitleWrapper">
+            <h2 class="section-title portfolio-title" ref="portfolioTitle">
+              Confira alguns dos projetos produzidos pela <span class="highlight">Tower Studio</span>
+            </h2>
+          </div>
+        </div>
+
+        <div class="portfolio-content">
+          <p class="portfolio-description">
+            Na Tower Studio, transformamos a visão de youtubers e influencers em realidade visual que <span class="highlight">engaja e converte</span>. Cada projeto é uma fusão de técnica apurada e storytelling estratégico, elevando a qualidade do seu conteúdo para além das expectativas. Seja para um vídeo de alta produção, um compilado dinâmico ou um formato inovador, nossa expertise garante vídeos que não apenas atraem milhões de visualizações, mas também fortalecem sua marca e conectam profundamente com sua audiência. Deixe a edição conosco e foque no que você faz de melhor: criar!
+          </p>
+
+          <div class="portfolio-videos">
+            <h3 class="portfolio-videos-title">Nossos Destaques:</h3>
+            <div class="video-responsive">
+              <iframe 
+                src="https://www.youtube.com/embed/VIDEO_ID_A" 
+                title="YouTube video player 1" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+              </iframe>
+            </div>
+            </div>
+        </div>
+      </section>
       </main>
   </div>
 </template>
 
 <script>
-import { defineComponent, ref, watch } from 'vue';
+import { defineComponent, ref, watch, onMounted, onUnmounted } from 'vue'; // Importe onMounted e onUnmounted
 import { register } from 'swiper/element/bundle';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -158,6 +188,8 @@ export default defineComponent({
   name: 'HomeView',
   setup() {
     const isMenuOpen = ref(false);
+    const portfolioTitle = ref(null); // Ref para o título do portfólio
+    const parallaxTitleWrapper = ref(null); // Ref para o wrapper do título do portfólio
 
     watch(isMenuOpen, (newValue) => {
       console.log('isMenuOpen CHANGED:', newValue);
@@ -178,6 +210,47 @@ export default defineComponent({
       document.body.classList.remove('no-scroll');
       console.log('Overlay or menu item clicked! isMenuOpen state:', isMenuOpen.value);
     };
+
+    // Lógica do Parallax
+    const handleScroll = () => {
+      if (portfolioTitle.value && parallaxTitleWrapper.value) {
+        const scrollY = window.scrollY;
+        // Obtenha a posição da seção do portfólio em relação à viewport
+        const sectionTop = parallaxTitleWrapper.value.getBoundingClientRect().top + scrollY;
+        const sectionHeight = parallaxTitleWrapper.value.offsetHeight;
+
+        // Calcule a porcentagem de rolagem dentro da seção do parallax
+        // O efeito começa quando a seção entra na tela e termina quando sai
+        const viewportHeight = window.innerHeight;
+        const startScroll = sectionTop - viewportHeight; // Ponto onde a seção começa a ser visível
+        const endScroll = sectionTop + sectionHeight; // Ponto onde a seção sai da tela
+
+        if (scrollY > startScroll && scrollY < endScroll) {
+          const scrollProgress = (scrollY - startScroll) / (endScroll - startScroll);
+          // Ajuste a velocidade do parallax aqui. Um valor menor move mais rápido.
+          const parallaxSpeed = 0.3; // Ajuste este valor (ex: 0.2, 0.4, 0.6)
+          const translateY = scrollProgress * 50 * parallaxSpeed; // Move o título verticalmente
+          portfolioTitle.value.style.transform = `translateY(${translateY}px)`;
+        } else if (scrollY <= startScroll) {
+          // Garante que o título esteja na posição inicial quando acima da seção
+          portfolioTitle.value.style.transform = `translateY(0px)`;
+        } else if (scrollY >= endScroll) {
+          // Garante que o título continue movendo na mesma direção quando abaixo da seção
+          // Isso evita um salto abrupto ao sair da seção
+          const parallaxOffsetAtEnd = (endScroll - startScroll) / (endScroll - startScroll) * 50 * parallaxSpeed;
+          portfolioTitle.value.style.transform = `translateY(${parallaxOffsetAtEnd}px)`;
+        }
+      }
+    };
+
+    onMounted(() => {
+      window.addEventListener('scroll', handleScroll);
+    });
+
+    onUnmounted(() => {
+      window.removeEventListener('scroll', handleScroll);
+    });
+    // Fim da lógica do Parallax
 
     const people = [
       { image: new URL('@/assets/super_xandao.png', import.meta.url).href, alt: 'Foto Super Xandão', name: 'Super Xandão' },
@@ -249,6 +322,8 @@ export default defineComponent({
       closeMenu,
       people,
       swiperOptions,
+      portfolioTitle, // Exponha a ref
+      parallaxTitleWrapper, // Exponha a ref
     };
   },
 });

@@ -239,7 +239,7 @@ body.no-scroll {
 }
 
 .impact-card {
-  background-color: #26262e;
+  background-color: #2a2a2a;
   border-radius: 10px;
   padding: 25px 30px;
   text-align: center;
@@ -457,7 +457,7 @@ body.no-scroll {
 }
 
 .service-card {
-  background-color: #26262e;
+  background-color: #2a2a2a;
   border-radius: 10px;
   padding: 30px;
   text-align: left;
@@ -520,9 +520,8 @@ body.no-scroll {
   color: #fff;
 }
 
-/* NOVA SEÇÃO: SOBRE NÓS */
 .about-us-section {
-  background-color: #1E1E24; /* Fundo escuro */
+  background-color: #1E1E24;
   color: #f0f0f0;
   padding: 80px 20px;
   margin: 0 auto;
@@ -531,31 +530,31 @@ body.no-scroll {
 
 .about-content {
   display: flex;
-  align-items: center; /* Alinha a imagem e o texto no centro vertical */
-  gap: 60px; /* Espaçamento entre a imagem e o texto */
+  align-items: center;
+  gap: 60px;
   justify-content: center;
-  flex-wrap: wrap; /* Permite que os itens quebrem em telas menores */
+  flex-wrap: wrap;
 }
 
 .about-image {
-  flex-shrink: 0; /* Impede que a imagem encolha */
-  width: 45%; /* Largura da imagem em telas maiores */
-  max-width: 450px; /* Limita o tamanho máximo da imagem */
-  border-radius: 10px; /* Bordas arredondadas para a imagem */
-  overflow: hidden; /* Garante que a imagem se adapte ao border-radius */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); /* Sombra para a imagem */
+  flex-shrink: 0;
+  width: 45%;
+  max-width: 450px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 .about-image img {
   display: block;
   width: 100%;
   height: auto;
-  object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+  object-fit: cover;
 }
 
 .about-text {
-  flex: 1; /* Permite que o texto ocupe o espaço restante */
-  min-width: 300px; /* Largura mínima para o bloco de texto */
+  flex: 1;
+  min-width: 300px;
   text-align: left;
 }
 
@@ -567,11 +566,11 @@ body.no-scroll {
   margin-bottom: 15px;
   font-weight: 600;
   display: block;
-  text-align: left; /* Garante que a tag fique alinhada à esquerda aqui */
+  text-align: left;
 }
 
 .about-text .section-title {
-  font-size: 3.2em; /* Título um pouco menor que o hero, mas ainda impactante */
+  font-size: 3.2em;
   margin-bottom: 25px;
   font-weight: 700;
   color: #f0f0f0;
@@ -583,8 +582,106 @@ body.no-scroll {
   font-size: 1.1em;
   color: #d0d0d0;
   line-height: 1.6;
-  margin-bottom: 20px; /* Espaço entre os parágrafos */
+  margin-bottom: 20px;
 }
+
+/* NOVA SEÇÃO: PORTFÓLIO */
+.portfolio-section {
+  background-color: #1E1E24; /* Fundo preto para destaque */
+  color: #f0f0f0;
+  padding: 80px 20px;
+  text-align: center;
+  overflow: hidden; /* Importante para o parallax do título */
+}
+
+.portfolio-header {
+  position: relative; /* Necessário para posicionar o título com parallax */
+  margin-bottom: 50px; /* Espaço entre o título e o conteúdo */
+}
+
+.portfolio-header .section-tag {
+  font-size: 0.9em;
+  color: #ff6666; /* Cor de destaque */
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  font-weight: 600;
+  display: block;
+}
+
+.parallax-title-wrapper {
+  overflow: hidden; /* Corta o texto para o efeito parallax */
+  display: inline-block; /* Para o overflow hidden funcionar no texto */
+  vertical-align: middle; /* Para alinhar com o fundo do section-title, se houver */
+}
+
+.portfolio-title {
+  font-size: 4.5em; /* Título grande como no exemplo */
+  font-weight: 700;
+  color: #f0f0f0; /* Cor normal do texto */
+  line-height: 1.1;
+  margin: 0 auto; /* Centraliza o título */
+  padding: 0 20px; /* Padding para não encostar nas bordas */
+  display: inline-block; /* Para o transform funcionar corretamente */
+  transition: transform 0.1s linear; /* Transição suave para o parallax */
+}
+
+.highlight-alt-green { /* Nova cor de destaque para o portfólio (amarelo/verde) */
+  background-color: #ADFF2F; /* Verde amarelado brilhante */
+  padding: 0 10px;
+  border-radius: 4px;
+  line-height: 1.2;
+  display: inline-block;
+  color: #1E1E24; /* Cor do texto dentro do destaque */
+  font-weight: 700;
+}
+
+.portfolio-content {
+  max-width: 1000px; /* Largura máxima para o conteúdo do portfólio */
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.portfolio-description {
+  font-size: 1.2em;
+  color: #d0d0d0;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  max-width: 800px; /* Limita a largura do parágrafo */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.portfolio-videos-title {
+  font-size: 2em;
+  color: #ff6666;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.video-responsive {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio (height / width = 9 / 16 = 0.5625) */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  background: #000;
+  margin-bottom: 30px; /* Espaço entre os vídeos */
+  border-radius: 10px; /* Bordas arredondadas para o vídeo */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Sombra para o vídeo */
+}
+
+.video-responsive iframe,
+.video-responsive object,
+.video-responsive embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 
 /* MEDIA QUERIES */
 
@@ -680,34 +777,42 @@ body.no-scroll {
     font-size: 0.95em;
   }
 
-  /* Sobre Nós Media Query */
   .about-content {
-    flex-direction: column; /* Empilha a imagem e o texto */
-    text-align: center; /* Centraliza o texto */
+    flex-direction: column;
+    text-align: center;
     gap: 40px;
   }
 
   .about-image {
-    width: 80%; /* Aumenta a largura da imagem */
-    max-width: 400px; /* Limita o tamanho máximo */
+    width: 80%;
+    max-width: 400px;
   }
 
   .about-text {
-    min-width: unset; /* Remove min-width */
-    text-align: center; /* Centraliza o texto */
+    min-width: unset;
+    text-align: center;
   }
 
   .about-text .section-tag,
   .about-text .section-title {
-    text-align: center; /* Centraliza a tag e o título */
+    text-align: center;
   }
 
   .about-text .section-title {
-    font-size: 2.8em; /* Ajusta o tamanho do título */
+    font-size: 2.8em;
   }
 
   .about-text p {
-    font-size: 1em; /* Ajusta o tamanho do parágrafo */
+    font-size: 1em;
+  }
+
+  /* Portfólio Media Query */
+  .portfolio-title {
+    font-size: 3.5em; /* Ajusta o tamanho do título do parallax */
+  }
+
+  .portfolio-description {
+    font-size: 1.1em;
   }
 }
 
@@ -900,9 +1005,17 @@ body.no-scroll {
     font-size: 0.9em;
   }
 
-  /* Sobre Nós Media Query */
   .about-us-section .section-title {
-    font-size: 2.2em; /* Ajusta o tamanho do título para mobile */
+    font-size: 2.2em;
+  }
+
+  /* Portfólio Media Query */
+  .portfolio-title {
+    font-size: 2.8em;
+  }
+
+  .portfolio-description {
+    font-size: 1em;
   }
 }
 
@@ -1001,8 +1114,25 @@ body.no-scroll {
     font-size: 0.85em;
   }
 
-  /* Sobre Nós Media Query */
   .about-us-section .section-title {
-    font-size: 1.8em; /* Ajusta o tamanho do título para mobile pequeno */
+    font-size: 1.8em;
+  }
+
+  /* Portfólio Media Query */
+  .portfolio-title {
+    font-size: 2.2em;
+  }
+
+  .portfolio-description {
+    font-size: 0.9em;
+  }
+
+  .video-responsive {
+    margin-bottom: 20px; /* Reduz espaço entre vídeos em mobile */
+  }
+
+  .portfolio-videos-title {
+    font-size: 1.6em;
+    color: #ff6666;
   }
 }
