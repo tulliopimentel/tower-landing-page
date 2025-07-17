@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Saira:wght@400;500;600;700&display=swap');
+
 html, body {
   overflow-x: hidden;
   padding-top: 105px;
@@ -11,7 +13,7 @@ html, body {
 }
 
 .landing-page {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Saira', sans-serif;
   color: #1E1E24;
 }
 
@@ -80,7 +82,7 @@ body.no-scroll {
 }
 
 .main-nav li a:hover {
-  color: #ff6666;
+  color: #FF0055;
 }
 
 .hamburger-menu {
@@ -162,7 +164,7 @@ body.no-scroll {
 }
 
 .highlight {
-  background-color: #ff6666;
+  background-color: #FF0055;
   padding: 0 8px;
   border-radius: 4px;
   line-height: 1.2;
@@ -264,7 +266,7 @@ body.no-scroll {
   left: 0;
   width: 100%;
   height: 5px;
-  background-color: #ff6666;
+  background-color: #FF0055;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   transform: translateY(-100%);
@@ -285,7 +287,7 @@ body.no-scroll {
 .impact-number {
   font-size: 3.2em;
   font-weight: 700;
-  color: #ff6666;
+  color: #FF0055;
   margin-bottom: 5px;
   line-height: 1;
   text-shadow: none;
@@ -379,11 +381,11 @@ body.no-scroll {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  color: #ff6666;
+  color: #FF0055;
   z-index: 10;
   cursor: pointer;
   --swiper-navigation-size: 40px;
-  --swiper-navigation-color: #ff6666;
+  --swiper-navigation-color: #FF0055;
 }
 
 .logos-carousel .swiper-button-prev {
@@ -409,7 +411,7 @@ body.no-scroll {
 }
 
 .logos-carousel .swiper-pagination-bullet-active {
-  background: #ff6666;
+  background: #FF0055;
   opacity: 1;
 }
 
@@ -424,7 +426,7 @@ body.no-scroll {
 
 .services-section .section-tag {
   font-size: 0.9em;
-  color: #ff6666;
+  color: #FF0055;
   letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 15px;
@@ -441,7 +443,7 @@ body.no-scroll {
 }
 
 .services-section .highlight-alt {
-  background-color: #ff6666;
+  background-color: #FF0055;
   padding: 0 10px;
   border-radius: 4px;
   line-height: 1.2;
@@ -480,7 +482,7 @@ body.no-scroll {
   left: 0;
   width: 100%;
   height: 5px;
-  background-color: #ff6666;
+  background-color: #FF0055;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   transform: translateY(-100%);
@@ -500,7 +502,7 @@ body.no-scroll {
 .service-card-title {
   font-size: 1.8em;
   font-weight: 600;
-  color: #ff6666;
+  color: #FF0055;
   margin-bottom: 15px;
   line-height: 1.2;
 }
@@ -512,7 +514,7 @@ body.no-scroll {
 }
 
 .service-card-description .highlight-small {
-  background-color: #ff6666;
+  background-color: #FF0055;
   padding: 0 6px;
   border-radius: 3px;
   line-height: 1.2;
@@ -560,7 +562,7 @@ body.no-scroll {
 
 .about-text .section-tag {
   font-size: 0.9em;
-  color: #ff6666;
+  color: #FF0055;
   letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 15px;
@@ -601,7 +603,7 @@ body.no-scroll {
 
 .portfolio-header .section-tag {
   font-size: 0.9em;
-  color: #ff6666; /* Cor de destaque */
+  color: #FF0055; /* Cor de destaque */
   letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 15px;
@@ -655,7 +657,7 @@ body.no-scroll {
 
 .portfolio-videos-title {
   font-size: 2em;
-  color: #ff6666;
+  color: #FF0055;
   margin-bottom: 30px;
   font-weight: 600;
 }
@@ -1133,6 +1135,6 @@ body.no-scroll {
 
   .portfolio-videos-title {
     font-size: 1.6em;
-    color: #ff6666;
+    color: #FF0055;
   }
 }
