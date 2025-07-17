@@ -27,9 +27,9 @@
     <main class="hero-section">
       <div class="hero-container">
         <div class="hero-text">
-          <h1 class="hero-title">Dê vida aos seus vídeos: Edição Profissional, Gravação e Motion Graphics</h1>
+          <h1 class="hero-title">Dê vida aos seus vídeos</h1>
           <p class="hero-subtitle">
-            <span class="highlight">Se preocupe somente em gravar</span> e deixe a edição, planejamento e roteiro com a **Tower Studio**.
+            <span class="highlight">Se preocupe somente em gravar</span> e deixe a Edição Profissional, Gravação e Motion Graphics com a Tower Studio.
           </p>
           <div class="hero-actions">
             <a href="https://wa.me/5518997762278?text=Olá, gostaria de solicitar um orçamento para edição de video" target="_blank" class="btn btn-primary" rel="noopener noreferrer" title="Solicitar Orçamento de Edição de Vídeo via WhatsApp">
@@ -209,7 +209,6 @@
       </div>
       <div class="footer-bottom">
         <p>&copy; {{ new Date().getFullYear() }} Tower Studio. Todos os direitos reservados.</p>
-        <p><a href="/politica-de-privacidade" title="Leia nossa Política de Privacidade">Política de Privacidade</a> | <a href="/termos-de-uso" title="Leia nossos Termos de Uso">Termos de Uso</a></p>
       </div>
     </footer>
   </div>
