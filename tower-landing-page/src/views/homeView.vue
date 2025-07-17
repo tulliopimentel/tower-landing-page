@@ -130,7 +130,7 @@
               Nossa jornada não começou em escritórios de luxo, mas nas ruas, observando o mundo sob uma perspectiva única. Foi lá, em meio à resiliência e à criatividade forçada pela necessidade, que percebemos o poder das histórias e como o vídeo poderia amplificá-las. Com uma câmera emprestada e uma paixão ardente por transformar o ordinário em extraordinário, **Maria e João**, como que por obra do destino, se uniram.
             </p>
             <p>
-              De cada dificuldade, tiramos um aprendizado; de cada recurso limitado, uma solução engenhosa. Essa vivência nos ensinou a valorizar a essência, a capturar a verdade e a criar com propósito. Hoje, a Tower Content é o reflexo dessa jornada: uma agência de conteúdo digital que entende a importância de cada história e o impacto real que um vídeo bem feito pode ter.
+              De cada dificuldade, tiramos um aprendizado; de cada recurso limitado, uma solução engenhosa. Essa vivência nos ensinou a valorizar a essência, a capturar a verdade e a criar com propósito. Hoje, a Tower Studio é o reflexo dessa jornada: uma agência de conteúdo digital que entende a importância de cada história e o impacto real que um vídeo bem feito pode ter.
             </p>
             <p>
               Não vendemos apenas vídeos; construímos <span class="highlight">pontes</span>, geramos conexões e transformamos sonhos em realidade digital. Sua história merece ser contada com a mesma dedicação e visão que nos trouxeram até aqui.
@@ -144,14 +144,14 @@
           <p class="section-tag">/ PORTFÓLIO /</p>
           <div class="parallax-title-wrapper" ref="parallaxTitleWrapper">
             <h2 class="section-title portfolio-title" ref="portfolioTitle">
-              Confira alguns dos projetos produzidos pela <span class="highlight">Tower Content</span>
+              Confira alguns dos projetos produzidos pela <span class="highlight">Tower Studio</span>
             </h2>
           </div>
         </div>
 
         <div class="portfolio-content">
           <p class="portfolio-description">
-            Na Tower Content, transformamos a visão de youtubers e influencers em realidade visual que <span class="highlight">engaja e converte</span>. Cada projeto é uma fusão de técnica apurada e storytelling estratégico, elevando a qualidade do seu conteúdo para além das expectativas. Seja para um vídeo de alta produção, um compilado dinâmico ou um formato inovador, nossa expertise garante vídeos que não apenas atraem milhões de visualizações, mas também fortalecem sua marca e conectam profundamente com sua audiência. Deixe a edição conosco e foque no que você faz de melhor: criar!
+            Na Tower Studio, transformamos a visão de youtubers e influencers em realidade visual que <span class="highlight">engaja e converte</span>. Cada projeto é uma fusão de técnica apurada e storytelling estratégico, elevando a qualidade do seu conteúdo para além das expectativas. Seja para um vídeo de alta produção, um compilado dinâmico ou um formato inovador, nossa expertise garante vídeos que não apenas atraem milhões de visualizações, mas também fortalecem sua marca e conectam profundamente com sua audiência. Deixe a edição conosco e foque no que você faz de melhor: criar!
           </p>
 
           <div class="portfolio-videos">
