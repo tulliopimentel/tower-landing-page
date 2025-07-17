@@ -1,3 +1,15 @@
+Do ponto de vista de UX (Experiência do Usuário), a colocação de um Call-to-Action (CTA) tão importante como "Solicitar Orçamento" é crucial. O objetivo é torná-lo facilmente acessível em momentos-chave da jornada do usuário.
+
+Considerando seu template, os dois lugares mais estratégicos seriam:
+
+No Hero Section (já está lá, mas reforçando): É o primeiro elemento que o usuário vê. Se ele já está convencido, o botão precisa estar ali.
+
+No final da seção de Serviços: Após o usuário entender o que você oferece, é o momento ideal para convidá-lo a dar o próximo passo e solicitar um orçamento.
+
+Aqui está o código com o botão "Solicitar Orçamento" replicado nesses dois locais, incluindo o link para WhatsApp com uma mensagem pré-definida (o que é uma ótima prática de UX!):
+
+HTML
+
 <template>
   <div class="landing-page" id="home">
     <header class="header">
@@ -32,7 +44,9 @@
             <span class="highlight">Se preocupe somente em gravar</span> e deixe o resto com a gente.
           </p>
           <div class="hero-actions">
-            <a href="#contact" class="btn btn-primary">SOLICITAR ORÇAMENTO</a>
+            <a href="https://wa.me/5518997762278?text=Olá, gostaria de solicitar um orçamento para edição de video" target="_blank" class="btn btn-primary">
+              SOLICITAR ORÇAMENTO
+            </a>
             <a href="#portfolio" class="btn btn-secondary">VER PORTFÓLIO</a>
           </div>
         </div>
@@ -54,7 +68,7 @@
           <span class="impact-number">+50</span>
           <span class="impact-description">clientes satisfeitos</span>
         </div>
-          <div class="impact-card">
+        <div class="impact-card">
           <span class="impact-number">+4 anos</span>
           <span class="impact-description">de mercado</span>
         </div>
@@ -114,6 +128,11 @@
             </p>
           </div>
         </div>
+        <div class="services-cta">
+            <a href="https://wa.me/5518997762278?text=Olá, gostaria de solicitar um orçamento para edição de video" target="_blank" class="btn btn-primary">
+                SOLICITAR ORÇAMENTO AGORA
+            </a>
+        </div>
       </section>
 
       <section class="about-us-section" id="about">
@@ -158,17 +177,17 @@
             <h3 class="portfolio-videos-title">Portfolio</h3>
             <div class="video-responsive">
               <iframe
-                src="https://www.youtube.com/embed/jfKfPfyqkOY?autoplay=1&mute=1&loop=1&playlist=jfKfPfyqkOY&controls=1"
-                title="YouTube video player - LoFi Girl"
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                title="YouTube video player - Never gonna give you up"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-              </iframe>
+                allowfullscreen
+              ></iframe>
             </div>
-            </div>
+          </div>
         </div>
       </section>
-      </main>
+    </main>
   </div>
 </template>
 
@@ -251,7 +270,7 @@ export default defineComponent({
       { image: new URL('@/assets/gorgonoide.jpg', import.meta.url).href, alt: 'Foto Gorgonoide', name: 'Gorgonoid' },
       { image: new URL('@/assets/tinows.jpg', import.meta.url).href, alt: 'Foto Tinows', name: 'Tinowns' },
       { image: new URL('@/assets/ericat.jpg', import.meta.url).href, alt: 'Foto Ericat', name: 'Ericat' },
-      { image: new URL('@/assets/gabriel_curiosidades.png', import.meta.url).href, alt: 'Foto Gabriel', name: 'Gabriel Chinchilla Curiosidades' },
+      { image: new URL('@/assets/gabriel_curiosidades.png', import.meta.url).href, alt: 'Foto Gabriel', name: 'Gabriel Chinchilla' },
       { image: new URL('@/assets/snickers.png', import.meta.url).href, alt: 'Foto Snickers', name: 'Snickers' },
       { image: new URL('@/assets/vivo_cliente.jpg', import.meta.url).href, alt: 'Foto Vivo', name: 'Vivo' },
     ];
