@@ -1,3 +1,13 @@
+html, body {
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 .landing-page {
   font-family: 'Poppins', sans-serif;
   color: #1E1E24;
@@ -89,15 +99,11 @@ body.no-scroll {
 /* MOBILE MENU OVERLAY */
 .mobile-menu-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
   z-index: 999;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
   pointer-events: none;
 }
 
@@ -216,18 +222,22 @@ body.no-scroll {
 
 /* COMPANY LOGOS / CAROUSEL SECTION */
 .company-logos {
+  width: 100%;
   max-width: 1200px;
   margin: 50px auto 20px;
   padding-top: 30px;
   border-top: 1px solid #444;
   text-align: center;
-  overflow: hidden; /* Mantém o overflow: hidden para cortar o que transborda */
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .company-logos p {
   font-size: 1.1em;
   color: #aaa;
   margin-bottom: 20px;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
 .logos-grid {
@@ -238,9 +248,9 @@ body.no-scroll {
 .logos-carousel {
   width: 100%;
   position: relative;
-  padding: 0 60px; /* Isso ainda pode ser um problema para telas muito pequenas */
   box-sizing: border-box;
-  /* Removendo display: flex; Deixe o Swiper gerenciar o layout interno dos slides */
+  overflow-x: hidden;
+  padding: 0 16px;
 }
 
 .logo-item {
@@ -249,7 +259,6 @@ body.no-scroll {
   align-items: center;
   text-align: center;
   padding: 15px 0px 20px 0px;
-  /* Larguras base para desktop. Serão ajustadas no mobile. */
   max-width: 150px;
   min-width: 100px;
   box-sizing: border-box;
@@ -278,6 +287,11 @@ body.no-scroll {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.swiper-slide {
+  box-sizing: border-box;
   max-width: 100%;
 }
 
@@ -357,6 +371,7 @@ body.no-scroll {
   .logos-carousel {
     padding: 0 50px;
   }
+
   .logos-carousel .swiper-button-prev,
   .logos-carousel .swiper-button-next {
     --swiper-navigation-size: 35px;
@@ -380,9 +395,11 @@ body.no-scroll {
   .hamburger-menu.is-open .bar:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
   }
+
   .hamburger-menu.is-open .bar:nth-child(2) {
     opacity: 0;
   }
+
   .hamburger-menu.is-open .bar:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
   }
@@ -390,21 +407,20 @@ body.no-scroll {
   .main-nav {
     position: fixed;
     top: 0;
-    right: -280px;
-    left: auto;
+    right: 0;
     width: 280px;
     height: 100%;
     background-color: #2a2a2a;
     flex-direction: column;
     padding-top: 80px;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
-    transition: right 0.3s ease;
+    transition: transform 0.3s ease;
     z-index: 1000;
-    transform: none;
+    transform: translateX(100%);
   }
 
   .main-nav.is-open {
-    right: 0;
+    transform: translateX(0%);
   }
 
   .main-nav ul {
@@ -442,14 +458,15 @@ body.no-scroll {
     height: 80px;
     width: 80px;
   }
+
   .logo-name {
     font-size: 0.75em;
   }
+
   .logo-item {
-    /* Ajustes para 768px */
-    width: 30%; /* Tente uma largura percentual baseada em slidesPerView: 3 */
-    max-width: 120px; /* Mantém um limite superior */
-    min-width: unset; /* Permite que seja menor que 80px se necessário */
+    width: 30%;
+    max-width: 120px;
+    min-width: unset;
     padding: 10px 0;
   }
 
@@ -459,8 +476,9 @@ body.no-scroll {
   }
 
   .logos-carousel {
-    padding: 0 10px; /* Reduz bastante o padding */
+    padding: 0 10px;
   }
+
   .logos-carousel .swiper-button-prev,
   .logos-carousel .swiper-button-next {
     --swiper-navigation-size: 30px;
@@ -468,6 +486,7 @@ body.no-scroll {
     transform: translateY(-50%);
     display: block;
   }
+
   .logos-carousel .swiper-pagination {
     bottom: 5px;
   }
@@ -477,26 +496,31 @@ body.no-scroll {
   .hero-title {
     font-size: 2em;
   }
+
   .hero-subtitle {
     font-size: 1em;
   }
+
   .btn {
     font-size: 1em;
     padding: 14px 25px;
   }
+
   .logos-carousel {
-    padding: 0 5px; /* Reduz ainda mais o padding */
+    padding: 0 5px;
   }
+
   .logo-item {
-    /* Ajustes para 480px */
-    width: 45%; /* Tente uma largura percentual baseada em slidesPerView: 1.5 ou 2 */
-    max-width: 100px; /* Mantém um limite superior */
+    width: 45%;
+    max-width: 100px;
     min-width: unset;
   }
+
   .logos-carousel .swiper-button-prev,
   .logos-carousel .swiper-button-next {
-    display: none; /* Oculta as setas em telas muito pequenas */
+    display: none;
   }
+
   .logos-carousel .swiper-pagination {
     bottom: 0px;
   }
