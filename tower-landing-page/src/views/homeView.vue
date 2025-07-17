@@ -165,7 +165,7 @@
           </p>
 
           <div class="portfolio-videos">
-            <h3 class="portfolio-videos-title">Exemplo de Edição de Vídeo para YouTube e Redes Sociais</h3>
+            <h3 class="portfolio-videos-title">Portfolio</h3>
             <div class="video-responsive">
               <iframe
                 src="https://www.youtube.com/embed/dQw4w9WgXcQ"
@@ -222,7 +222,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/free-mode';
 
-import '../styles/home.css'; // Mantenha a importação do seu CSS existente
+import '../styles/home.css';
 
 register();
 
@@ -247,10 +247,36 @@ export default defineComponent({
       }
     };
 
-    const closeMenu = () => {
+    const closeMenu = (event) => {
+      const isNavLink = event && event.target && event.target.tagName === 'A' && event.target.closest('.main-nav');
+      const href = isNavLink ? event.target.getAttribute('href') : null;
+
+      if (isNavLink && href && href.startsWith('#')) {
+        event.preventDefault();
+      }
+
       isMenuOpen.value = false;
       document.body.classList.remove('no-scroll');
+
       console.log('Overlay or menu item clicked! isMenuOpen state:', isMenuOpen.value);
+
+      if (isNavLink && href) {
+        setTimeout(() => {
+          if (href.startsWith('#')) {
+            const targetElement = document.querySelector(href);
+            if (targetElement) {
+              const headerOffset = 105;
+              const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+              window.scrollTo({
+                top: elementPosition - headerOffset,
+                behavior: 'smooth'
+              });
+            }
+          } else {
+            window.location.href = href;
+          }
+        }, 300);
+      }
     };
 
     const handleScroll = () => {
