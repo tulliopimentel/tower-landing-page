@@ -164,7 +164,7 @@ export default defineComponent({
         },
         0: { // Para telas muito pequenas (ex: mobile portrait)
           slidesPerView: 2, // 1 foto inteira + metade da próxima. Isso ajuda a dar a ideia de carrossel.
-          spaceBetween: 2,
+          spaceBetween: 0
           // Se 1.5 ainda estiver quebrando, tente slidesPerView: 1 e veja se o layout fica estável.
           // Com 1.5, o freeMode é muito importante para a fluidez.
         },

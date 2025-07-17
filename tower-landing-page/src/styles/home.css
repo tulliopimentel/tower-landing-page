@@ -47,11 +47,17 @@ body.no-scroll {
 
 /* MAIN NAVIGATION (DESKTOP) */
 .main-nav {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   transition: all 0.3s ease;
   z-index: 1000;
+}
+
+/* Desktop menu centralizado */
+@media (min-width: 769px) {
+  .main-nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 .main-nav ul {
@@ -244,7 +250,6 @@ body.no-scroll {
   display: none;
 }
 
-/* CAROUSEL (SWIPER) STYLES */
 .logos-carousel {
   width: 100%;
   position: relative;
@@ -295,7 +300,6 @@ body.no-scroll {
   max-width: 100%;
 }
 
-/* SWIPER NAVIGATION BUTTONS */
 .logos-carousel .swiper-button-prev,
 .logos-carousel .swiper-button-next {
   position: absolute;
@@ -316,7 +320,6 @@ body.no-scroll {
   right: 10px;
 }
 
-/* SWIPER PAGINATION (BULLETS) */
 .logos-carousel .swiper-pagination {
   bottom: 10px;
   left: 0;
@@ -408,15 +411,24 @@ body.no-scroll {
     position: fixed;
     top: 0;
     right: 0;
-    width: 280px;
-    height: 100%;
+    width: 50vw; /* Mantido para garantir cobertura total da largura da viewport */
+    height: 100vh; /* Mantido para garantir cobertura total da altura da viewport */
     background-color: #2a2a2a;
-    flex-direction: column;
-    padding-top: 80px;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
     z-index: 1000;
     transform: translateX(100%);
+    overflow-y: auto; /* ALTERADO: Permite rolagem vertical se o conteúdo for maior que a tela */
+    overflow-x: hidden; /* Adicionado: Garante que não haja rolagem horizontal */
+
+    /* ADICIONADO: Flexbox para controlar o alinhamento do conteúdo interno */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */ /* Removido para que o padding-top funcione melhor no topo */
+    align-items: center; /* Centraliza horizontalmente o conteúdo da lista */
+
+    padding-top: 80px; /* Mantido para dar espaço abaixo do header */
+    padding-bottom: 20px; /* ADICIONADO: Um pouco de padding na parte inferior para respiro */
   }
 
   .main-nav.is-open {
@@ -427,12 +439,29 @@ body.no-scroll {
     flex-direction: column;
     gap: 20px;
     text-align: center;
-    padding: 0 20px;
+    padding: 0 20px; /* Mantido padding horizontal */
+    width: 100%; /* Garante que a ul ocupe toda a largura */
+    flex-grow: 1; /* ADICIONADO: Permite que a ul ocupe o espaço restante do flex container */
+    display: flex; /* ADICIONADO: Para que gap funcione corretamente com flex-direction: column */
+    flex-direction: column; /* Mantido para empilhar os itens */
+    justify-content: flex-start; /* ADICIONADO: Para que os itens comecem do topo da área útil da ul */
+  }
+
+  .main-nav li {
+    width: 100%;
+    /* Removendo qualquer altura fixa ou máxima para permitir que o conteúdo se ajuste */
+    height: auto;
+    max-height: none;
   }
 
   .main-nav li a {
     font-size: 1.2em;
     color: #f0f0f0;
+    word-break: break-word;
+    white-space: normal;
+    display: block;
+    padding: 10px 0;
+    height: auto; /* Garante que a altura do link se ajuste ao conteúdo */
   }
 
   .hero-title {
@@ -493,6 +522,40 @@ body.no-scroll {
 }
 
 @media (max-width: 480px) {
+  /* Mantendo as mesmas lógicas do 768px para o menu principal */
+  .main-nav {
+    width: 100vw;
+    height: 100vh;
+    padding-top: 80px;
+    padding-bottom: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main-nav ul {
+    padding: 0 20px;
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .main-nav li {
+    width: 100%;
+    height: auto;
+    max-height: none;
+  }
+
+  .main-nav li a {
+    font-size: 1.2em; /* Pode ajustar o tamanho da fonte para telas menores se desejar */
+    padding: 10px 0;
+    height: auto;
+  }
+
   .hero-title {
     font-size: 2em;
   }
@@ -514,6 +577,7 @@ body.no-scroll {
     width: 45%;
     max-width: 100px;
     min-width: unset;
+    padding: 10px 0;
   }
 
   .logos-carousel .swiper-button-prev,
