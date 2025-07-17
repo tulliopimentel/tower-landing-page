@@ -60,7 +60,7 @@
         </div>
       </div>
       <div class="company-logos">
-        <p>Parceiros que brilham: Conheça alguns que confiam em nosso trabalho. E muito mais!</p>
+        <p>Parceiros que brilham: Conheça quem já confia em nosso trabalho. E muito mais!</p>
         <swiper-container
           :slides-per-view="swiperOptions.slidesPerView"
           :space-between="swiperOptions.spaceBetween"
@@ -84,7 +84,8 @@
       </div>
 
       <section class="services-section" id="services">
-        <p class="section-tag">/ SERVIÇOS /</p> <h2 class="section-title">
+        <p class="section-tag">/ SERVIÇOS /</p> 
+        <h2 class="section-title">
           Soluções <span class="highlight-alt">completas</span> para o seu conteúdo, do conceito à entrega.
         </h2>
         <div class="services-grid">
@@ -114,12 +115,34 @@
           </div>
         </div>
       </section>
+
+      <section class="about-us-section" id="about">
+        <div class="about-content">
+          <div class="about-image">
+            <img src="@/assets/fer.jpg" alt="Foto da equipe ou fundadores" />
+          </div>
+          <div class="about-text">
+            <p class="section-tag">/ QUEM SOMOS NÓS /</p>
+            <h2 class="section-title">
+              Uma história de <span class="highlight">paixão</span> e superação pelo conteúdo digital.
+            </h2>
+            <p>
+              Nossa jornada não começou em escritórios de luxo, mas nas ruas, observando o mundo sob uma perspectiva única. Foi lá, em meio à resiliência e à criatividade forçada pela necessidade, que percebemos o poder das histórias e como o vídeo poderia amplificá-las. Com uma câmera emprestada e uma paixão ardente por transformar o ordinário em extraordinário, **Maria e João**, como que por obra do destino, se uniram.
+            </p>
+            <p>
+              De cada dificuldade, tiramos um aprendizado; de cada recurso limitado, uma solução engenhosa. Essa vivência nos ensinou a valorizar a essência, a capturar a verdade e a criar com propósito. Hoje, a Tower Content é o reflexo dessa jornada: uma agência de conteúdo digital que entende a importância de cada história e o impacto real que um vídeo bem feito pode ter.
+            </p>
+            <p>
+              Não vendemos apenas vídeos; construímos <span class="highlight-small">pontes</span>, geramos conexões e transformamos sonhos em realidade digital. Sua história merece ser contada com a mesma dedicação e visão que nos trouxeram até aqui.
+            </p>
+          </div>
+        </div>
+      </section>
       </main>
   </div>
 </template>
 
 <script>
-// (Seu script existente permanece inalterado)
 import { defineComponent, ref, watch } from 'vue';
 import { register } from 'swiper/element/bundle';
 import 'swiper/css';
