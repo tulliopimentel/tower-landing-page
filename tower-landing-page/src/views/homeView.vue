@@ -84,33 +84,33 @@
       </div>
 
       <section class="services-section" id="services">
-        <p class="section-tag">/ SERVIÇOS /</p> 
+        <p class="section-tag">/ SERVIÇOS /</p>
         <h2 class="section-title">
-          Soluções <span class="highlight-alt">completas</span> para o seu conteúdo, do conceito à entrega.
+          Soluções <span class="highlight">completas</span> para o seu conteúdo, do conceito à entrega.
         </h2>
         <div class="services-grid">
           <div class="service-card">
             <h3 class="service-card-title">Edição de Vídeo</h3>
             <p class="service-card-description">
-              Transformamos suas ideias em narrativas visuais <span class="highlight-small">cativantes</span>, com cortes precisos e efeitos impactantes para ser publicado em qualquer formato nas redes sociais.
+              Transformamos suas ideias em narrativas visuais <span class="highlight">cativantes</span>, com cortes precisos e efeitos impactantes para ser publicado em qualquer formato nas redes sociais.
             </p>
           </div>
           <div class="service-card">
             <h3 class="service-card-title">Gravações</h3>
             <p class="service-card-description">
-              Capturamos a <span class="highlight-small">essência</span> da sua mensagem, seja com equipamentos profissionais em solo ou imagens aéreas de drone.
+              Capturamos a <span class="highlight">essência</span> da sua mensagem, seja com equipamentos profissionais em solo ou imagens aéreas de drone.
             </p>
           </div>
           <div class="service-card">
             <h3 class="service-card-title">Motion Graphics & Ilustração</h3>
             <p class="service-card-description">
-              Damos vida à sua marca com animações e <span class="highlight-small">ilustrações criativas</span>, tornando vídeos complexos em experiências visuais claras.
+              Damos vida à sua marca com animações e <span class="highlight">ilustrações criativas</span>, tornando vídeos complexos em experiências visuais claras.
             </p>
           </div>
           <div class="service-card">
             <h3 class="service-card-title">Planejamento & Roteiro</h3>
             <p class="service-card-description">
-              Desenvolvemos o <span class="highlight-small">roteiro</span> ideal e um planejamento estratégico para cada etapa do seu projeto de vídeo, do conceito à entrega final.
+              Desenvolvemos o <span class="highlight">roteiro</span> ideal e um planejamento estratégico para cada etapa do seu projeto de vídeo, do conceito à entrega final.
             </p>
           </div>
         </div>
@@ -130,7 +130,7 @@
               Nossa jornada não começou em escritórios de luxo, mas nas ruas, observando o mundo sob uma perspectiva única. Foi lá, em meio à resiliência e à criatividade forçada pela necessidade, que percebemos o poder das histórias e como o vídeo poderia amplificá-las. Com uma câmera emprestada e uma paixão ardente por transformar o ordinário em extraordinário, **Maria e João**, como que por obra do destino, se uniram.
             </p>
             <p>
-              De cada dificuldade, tiramos um aprendizado; de cada recurso limitado, uma solução engenhosa. Essa vivência nos ensinou a valorizar a essência, a capturar a verdade e a criar com propósito. Hoje, a Tower Studio é o reflexo dessa jornada: uma agência de conteúdo digital que entende a importância de cada história e o impacto real que um vídeo bem feito pode ter.
+              De cada dificuldade, tiramos um aprendizado; de cada recurso limitado, uma solução engenhosa. Essa vivência nos ensinou a valorizar a essência, a capturar a verdade e a criar com propósito. Hoje, a Tower Content é o reflexo dessa jornada: uma agência de conteúdo digital que entende a importância de cada história e o impacto real que um vídeo bem feito pode ter.
             </p>
             <p>
               Não vendemos apenas vídeos; construímos <span class="highlight">pontes</span>, geramos conexões e transformamos sonhos em realidade digital. Sua história merece ser contada com a mesma dedicação e visão que nos trouxeram até aqui.
@@ -144,21 +144,22 @@
           <p class="section-tag">/ PORTFÓLIO /</p>
           <div class="parallax-title-wrapper" ref="parallaxTitleWrapper">
             <h2 class="section-title portfolio-title" ref="portfolioTitle">
-              Confira alguns dos projetos produzidos pela <span class="highlight">Tower Studio</span>
+              Confira alguns dos projetos produzidos pela <span class="highlight">Tower Content</span>
             </h2>
           </div>
         </div>
 
         <div class="portfolio-content">
           <p class="portfolio-description">
-            Na Tower Studio, transformamos a visão de youtubers e influencers em realidade visual que <span class="highlight-small">engaja e converte</span>. Cada projeto é uma fusão de técnica apurada e storytelling estratégico, elevando a qualidade do seu conteúdo para além das expectativas. Seja para um vídeo de alta produção, um compilado dinâmico ou um formato inovador, nossa expertise garante vídeos que não apenas atraem milhões de visualizações, mas também fortalecem sua marca e conectam profundamente com sua audiência. Deixe a edição conosco e foque no que você faz de melhor: criar!
+            Na Tower Content, transformamos a visão de youtubers e influencers em realidade visual que <span class="highlight">engaja e converte</span>. Cada projeto é uma fusão de técnica apurada e storytelling estratégico, elevando a qualidade do seu conteúdo para além das expectativas. Seja para um vídeo de alta produção, um compilado dinâmico ou um formato inovador, nossa expertise garante vídeos que não apenas atraem milhões de visualizações, mas também fortalecem sua marca e conectam profundamente com sua audiência. Deixe a edição conosco e foque no que você faz de melhor: criar!
           </p>
 
           <div class="portfolio-videos">
-            <h3 class="portfolio-videos-title">Conteúdo para Youtubers e Influencers:</h3>
+            <h3 class="portfolio-videos-title">Portfolio</h3>
             <div class="video-responsive">
               <iframe
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=example"  title="YouTube video player 1"
+                src="https://www.youtube.com/embed/jfKfPfyqkOY?autoplay=1&mute=1&loop=1&playlist=jfKfPfyqkOY&controls=1"
+                title="YouTube video player - LoFi Girl"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen>
@@ -210,7 +211,6 @@ export default defineComponent({
       console.log('Overlay or menu item clicked! isMenuOpen state:', isMenuOpen.value);
     };
 
-    // Lógica do Parallax
     const handleScroll = () => {
       if (portfolioTitle.value && parallaxTitleWrapper.value) {
         const scrollY = window.scrollY;
@@ -243,7 +243,6 @@ export default defineComponent({
     onUnmounted(() => {
       window.removeEventListener('scroll', handleScroll);
     });
-    // Fim da lógica do Parallax
 
     const people = [
       { image: new URL('@/assets/super_xandao.png', import.meta.url).href, alt: 'Foto Super Xandão', name: 'Super Xandão' },
@@ -316,7 +315,7 @@ export default defineComponent({
       people,
       swiperOptions,
       portfolioTitle,
-      parallaxTitleWrapper,
+      parallaxTitleWrapper
     };
   },
 });
