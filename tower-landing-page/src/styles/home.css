@@ -40,7 +40,7 @@ body.no-scroll {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  transition: all 0.3s ease; /* Transição para propriedades gerais */
+  transition: all 0.3s ease;
   z-index: 1000;
 }
 
@@ -67,7 +67,7 @@ body.no-scroll {
 
 /* HAMBURGER MENU ICON */
 .hamburger-menu {
-  display: none; /* Escondido por padrão no desktop */
+  display: none;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -98,13 +98,13 @@ body.no-scroll {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
-  pointer-events: none; /* Inativo quando invisível */
+  pointer-events: none;
 }
 
 .mobile-menu-overlay.is-open {
   opacity: 1;
   visibility: visible;
-  pointer-events: auto; /* Ativo quando visível */
+  pointer-events: auto;
 }
 
 /* HERO SECTION */
@@ -221,25 +221,26 @@ body.no-scroll {
   padding-top: 30px;
   border-top: 1px solid #444;
   text-align: center;
-  overflow: hidden;
+  overflow: hidden; /* Mantém o overflow: hidden para cortar o que transborda */
 }
 
 .company-logos p {
-  font-size: 0.9em;
+  font-size: 1.1em;
   color: #aaa;
   margin-bottom: 20px;
 }
 
 .logos-grid {
-  display: none; /* Escondido para usar o carrossel */
+  display: none;
 }
 
 /* CAROUSEL (SWIPER) STYLES */
 .logos-carousel {
   width: 100%;
-  position: relative; /* ESSENCIAL para posicionamento absoluto dos controles */
-  padding: 0 60px; /* Espaço para as setas */
-  box-sizing: border-box; /* Garante que o padding não adicione largura extra */
+  position: relative;
+  padding: 0 60px; /* Isso ainda pode ser um problema para telas muito pequenas */
+  box-sizing: border-box;
+  /* Removendo display: flex; Deixe o Swiper gerenciar o layout interno dos slides */
 }
 
 .logo-item {
@@ -247,16 +248,19 @@ body.no-scroll {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 15px 10px;
+  padding: 15px 0px 20px 0px;
+  /* Larguras base para desktop. Serão ajustadas no mobile. */
+  max-width: 150px;
+  min-width: 100px;
+  box-sizing: border-box;
 }
 
 .company-logo {
-  height: 80px;
-  width: 80px;
+  height: 110px;
+  width: 110px;
   border-radius: 50%;
   object-fit: cover;
   opacity: 0.9;
-  filter: grayscale(20%) brightness(1.2);
   transition: all 0.3s ease;
   margin-bottom: 10px;
 }
@@ -280,23 +284,22 @@ body.no-scroll {
 /* SWIPER NAVIGATION BUTTONS */
 .logos-carousel .swiper-button-prev,
 .logos-carousel .swiper-button-next {
-  position: absolute; /* Posicionamento absoluto em relação ao .logos-carousel */
+  position: absolute;
   top: 50%;
   transform: translateY(-50%);
   color: #ff6666;
-  z-index: 10; /* Garante que as setas estejam acima dos slides */
+  z-index: 10;
   cursor: pointer;
-  /* Variáveis CSS para customização do Swiper */
   --swiper-navigation-size: 40px;
   --swiper-navigation-color: #ff6666;
 }
 
 .logos-carousel .swiper-button-prev {
-  left: 10px; /* Posição da seta esquerda */
+  left: 10px;
 }
 
 .logos-carousel .swiper-button-next {
-  right: 10px; /* Posição da seta direita */
+  right: 10px;
 }
 
 /* SWIPER PAGINATION (BULLETS) */
@@ -352,11 +355,11 @@ body.no-scroll {
   }
 
   .logos-carousel {
-    padding: 0 50px; /* Ajuste para telas médias */
+    padding: 0 50px;
   }
   .logos-carousel .swiper-button-prev,
   .logos-carousel .swiper-button-next {
-    --swiper-navigation-size: 35px; /* Ajuste o tamanho das setas */
+    --swiper-navigation-size: 35px;
   }
 }
 
@@ -371,7 +374,7 @@ body.no-scroll {
   }
 
   .hamburger-menu {
-    display: block; /* Visível no mobile */
+    display: block;
   }
 
   .hamburger-menu.is-open .bar:nth-child(1) {
@@ -388,7 +391,7 @@ body.no-scroll {
     position: fixed;
     top: 0;
     right: -280px;
-    left: auto; /* Corrige conflito com 'left' */
+    left: auto;
     width: 280px;
     height: 100%;
     background-color: #2a2a2a;
@@ -436,14 +439,18 @@ body.no-scroll {
   }
 
   .company-logo {
-    height: 60px;
-    width: 60px;
+    height: 80px;
+    width: 80px;
   }
   .logo-name {
-    font-size: 0.8em;
+    font-size: 0.75em;
   }
   .logo-item {
-    flex-basis: auto;
+    /* Ajustes para 768px */
+    width: 30%; /* Tente uma largura percentual baseada em slidesPerView: 3 */
+    max-width: 120px; /* Mantém um limite superior */
+    min-width: unset; /* Permite que seja menor que 80px se necessário */
+    padding: 10px 0;
   }
 
   .hero-section {
@@ -452,17 +459,17 @@ body.no-scroll {
   }
 
   .logos-carousel {
-    padding: 0 40px; /* Ajuste para telas menores */
+    padding: 0 10px; /* Reduz bastante o padding */
   }
   .logos-carousel .swiper-button-prev,
   .logos-carousel .swiper-button-next {
     --swiper-navigation-size: 30px;
     top: 50%;
     transform: translateY(-50%);
-    display: block; /* Garante que estejam visíveis */
+    display: block;
   }
   .logos-carousel .swiper-pagination {
-    bottom: 5px; /* Ajusta a posição da paginação */
+    bottom: 5px;
   }
 }
 
@@ -478,11 +485,17 @@ body.no-scroll {
     padding: 14px 25px;
   }
   .logos-carousel {
-    padding: 0 15px; /* Reduz o padding em telas muito pequenas */
+    padding: 0 5px; /* Reduz ainda mais o padding */
+  }
+  .logo-item {
+    /* Ajustes para 480px */
+    width: 45%; /* Tente uma largura percentual baseada em slidesPerView: 1.5 ou 2 */
+    max-width: 100px; /* Mantém um limite superior */
+    min-width: unset;
   }
   .logos-carousel .swiper-button-prev,
   .logos-carousel .swiper-button-next {
-    display: none; /* Oculta as setas em telas muito pequenas para evitar sobreposição */
+    display: none; /* Oculta as setas em telas muito pequenas */
   }
   .logos-carousel .swiper-pagination {
     bottom: 0px;
