@@ -1,5 +1,5 @@
 <template>
-  <div class="landing-page">
+  <div class="landing-page" id="home">
     <header class="header">
       <div class="container">
         <div class="logo">
