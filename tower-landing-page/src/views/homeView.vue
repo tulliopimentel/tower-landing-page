@@ -25,24 +25,29 @@
     <div class="mobile-menu-overlay" :class="{ 'is-open': isMenuOpen }" @click="closeMenu"></div>
 
     <main class="hero-section">
-      <div class="container">
-        <h1 class="hero-title">Dê vida aos seus vídeos</h1>
-        <p class="hero-subtitle">
-       <span class="highlight">Se preocupe somente em gravar</span> e deixe o resto com a gente.
-        </p>
-        <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">SOLICITAR ORÇAMENTO</a>
-          <a href="#portfolio" class="btn btn-secondary">VER PORTFÓLIO</a>
-        </div>
-        <div class="company-logos">
-          <p>Escolhida por diversos influencers e youtubers</p>
-          <div class="logos-grid">
-            <div class="placeholder-logo">LOGO 1</div>
-            <div class="placeholder-logo">LOGO 2</div>
-            <div class="placeholder-logo">LOGO 3</div>
-            <div class="placeholder-logo">LOGO 4</div>
-            <div class="placeholder-logo">LOGO 5</div>
+      <div class="hero-container">
+        <div class="hero-text">
+          <h1 class="hero-title">Dê vida aos seus vídeos</h1>
+          <p class="hero-subtitle">
+            <span class="highlight">Se preocupe somente em gravar</span> e deixe o resto com a gente.
+          </p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">SOLICITAR ORÇAMENTO</a>
+            <a href="#portfolio" class="btn btn-secondary">VER PORTFÓLIO</a>
           </div>
+        </div>
+        <div class="hero-image">
+          <img src="@/assets/TOWER-PERFIL.png" alt="Imagem da Torre Perfil" />
+        </div>
+      </div>
+      <div class="company-logos">
+        <p>Escolhida por diversos influencers e youtubers</p>
+        <div class="logos-grid">
+          <div class="placeholder-logo">LOGO 1</div>
+          <div class="placeholder-logo">LOGO 2</div>
+          <div class="placeholder-logo">LOGO 3</div>
+          <div class="placeholder-logo">LOGO 4</div>
+          <div class="placeholder-logo">LOGO 5</div>
         </div>
       </div>
     </main>
@@ -50,7 +55,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, watch } from 'vue'; // Importe 'watch' aqui
+import { defineComponent, ref, watch } from 'vue';
 import '../styles/home.css';
 
 export default defineComponent({
@@ -58,7 +63,6 @@ export default defineComponent({
   setup() {
     const isMenuOpen = ref(false);
 
-    // Adicione um watcher para monitorar isMenuOpen
     watch(isMenuOpen, (newValue, oldValue) => {
       console.log('isMenuOpen CHANGED:', oldValue, '->', newValue);
     });
