@@ -42,13 +42,23 @@
       </div>
       <div class="company-logos">
         <p>Escolhida por diversos influencers e youtubers</p>
-        <div class="logos-grid">
-          <div class="placeholder-logo">LOGO 1</div>
-          <div class="placeholder-logo">LOGO 2</div>
-          <div class="placeholder-logo">LOGO 3</div>
-          <div class="placeholder-logo">LOGO 4</div>
-          <div class="placeholder-logo">LOGO 5</div>
-        </div>
+        <swiper-container
+          :slides-per-view="swiperOptions.slidesPerView"
+          :space-between="swiperOptions.spaceBetween"
+          :loop="swiperOptions.loop"
+          :autoplay="swiperOptions.autoplay"
+          :pagination="swiperOptions.pagination"
+          :navigation="swiperOptions.navigation"
+          :breakpoints="swiperOptions.breakpoints"
+          class="logos-carousel"
+        >
+          <swiper-slide v-for="(person, index) in people" :key="index">
+            <div class="logo-item">
+              <img :src="person.image" :alt="person.alt" class="company-logo" />
+              <span class="logo-name">{{ person.name }}</span>
+            </div>
+          </swiper-slide>
+          </swiper-container>
       </div>
     </main>
   </div>
@@ -56,15 +66,24 @@
 
 <script>
 import { defineComponent, ref, watch } from 'vue';
+import { register } from 'swiper/element/bundle'; // Importa o registro dos web components
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 import '../styles/home.css';
+
+// Registra todos os elementos Swiper, incluindo swiper-container, swiper-slide
+register();
 
 export default defineComponent({
   name: 'HomeView',
   setup() {
     const isMenuOpen = ref(false);
 
-    watch(isMenuOpen, (newValue, oldValue) => {
-      console.log('isMenuOpen CHANGED:', oldValue, '->', newValue);
+    // O console.log do watch pode ser removido após a depuração
+    watch(isMenuOpen, (newValue) => {
+      console.log('isMenuOpen CHANGED:', newValue);
     });
 
     const toggleMenu = () => {
@@ -83,10 +102,60 @@ export default defineComponent({
       console.log('Overlay or menu item clicked! isMenuOpen state:', isMenuOpen.value);
     };
 
+    const people = [
+      { image: new URL('@/assets/super_xandao.png', import.meta.url).href, alt: 'Foto Super Xandão', name: 'Super Xandão' },
+      { image: new URL('@/assets/victor_sarro.png', import.meta.url).href, alt: 'Foto Victor Sarro', name: 'Victor Sarro' },
+      { image: new URL('@/assets/anna_egreja.jpg', import.meta.url).href, alt: 'Foto Anna Egreja', name: 'Anna Egreja' },
+      { image: new URL('@/assets/gorgonoide.jpg', import.meta.url).href, alt: 'Foto Gorgonoide', name: 'Gorgonoid' },
+      { image: new URL('@/assets/tinows.jpg', import.meta.url).href, alt: 'Foto Tinows', name: 'Tinowns' }
+    ];
+
+    const swiperOptions = {
+      slidesPerView: 5,
+      spaceBetween: 30,
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination', // O Swiper procurará por este elemento no DOM, ele o criará se não existir.
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next', // O Swiper procurará por este elemento no DOM, ele o criará se não existir.
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        1200: {
+          slidesPerView: 5,
+          spaceBetween: 30,
+        },
+        992: {
+          slidesPerView: 4,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 20,
+        },
+        576: {
+          slidesPerView: 2,
+          spaceBetween: 15,
+        },
+        0: {
+          slidesPerView: 1,
+          spaceBetween: 10,
+        },
+      },
+    };
+
     return {
       isMenuOpen,
       toggleMenu,
       closeMenu,
+      people,
+      swiperOptions,
     };
   },
 });
