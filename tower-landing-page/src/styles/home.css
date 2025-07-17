@@ -657,6 +657,8 @@ body.no-scroll {
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  text-align: justify; /* Adicionado para justificar o texto */
+  text-justify: inter-word; /* Para navegadores que suportam */
 }
 
 .portfolio-description-small {
@@ -1145,6 +1147,7 @@ body.no-scroll {
   }
 
   .portfolio-description {
+      text-align: justify;
     font-size: 0.9em;
   }
 
