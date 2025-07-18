@@ -127,22 +127,22 @@
       <section class="about-us-section" id="about" aria-labelledby="about-title">
         <div class="about-content">
           <div class="about-image">
-            <img src="@/assets/fer.jpg" alt="Maria e João, fundadores da Tower Studio, equipe especializada em produção de conteúdo digital" loading="lazy" width="600" height="400" />
+            <img src="@/assets/TOWER-PERFIL.png" alt="Guilherme e Gabriel, fundadores da Tower Studio, equipe especializada em produção de conteúdo digital" loading="lazy" width="600" height="400" />
           </div>
           <div class="about-text">
             <p class="section-tag">/ QUEM SOMOS NÓS /</p>
             <h2 id="about-title" class="section-title">
               Uma história de <span class="highlight">paixão</span>, superação e expertise em conteúdo digital.
             </h2>
-            <p>
-              Nossa jornada não começou em escritórios de luxo, mas nas ruas, observando o mundo sob uma perspectiva única. Foi lá, em meio à resiliência e à criatividade forçada pela necessidade, que percebemos o poder das histórias e como o vídeo poderia amplificá-las. Com uma câmera emprestada e uma paixão ardente por transformar o ordinário em extraordinário, **Maria e João**, como que por obra do destino, se uniram.
-            </p>
-            <p>
-              De cada dificuldade, tiramos um aprendizado; de cada recurso limitado, uma solução engenhosa. Essa vivência nos ensinou a valorizar a essência, a capturar a verdade e a criar com propósito. Hoje, a **Tower Studio** é o reflexo dessa jornada: uma agência de conteúdo digital que entende a importância de cada história e o impacto real que um vídeo bem feito pode ter.
-            </p>
-            <p>
-              Não vendemos apenas vídeos; construímos <span class="highlight">pontes</span>, geramos conexões e transformamos sonhos em realidade digital. Sua história merece ser contada com a mesma dedicação e visão que nos trouxeram até aqui.
-            </p>
+           <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <p>
+            Curabitur pretium tincidunt lacus. Nulla gravida <span class="highlight">orci</span> a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh egestas ultricies. Aenean a dolor et sapien <span class="highlight">placerat</span> sagittis.
+          </p>
+          <p>
+            Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu <span class="highlight">libero</span> sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Ut varius tincidunt libero.
+          </p>
           </div>
         </div>
       </section>
@@ -166,7 +166,7 @@
             <h3 class="portfolio-videos-title">Portfolio</h3>
             <div class="video-responsive">
               <iframe
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                src="https://www.youtube.com/embed/9Fsa0_uuaDM"
                 title="Melhores momentos de edição de vídeo - Portfólio Tower Studio"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
