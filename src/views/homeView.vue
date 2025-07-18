@@ -427,7 +427,7 @@ export default defineComponent({
     };
 
     const testimonialsSwiperOptions = {
-      slidesPerView: 2, // Padrão para telas pequenas
+      slidesPerView: 1, // Padrão para telas pequenas
       spaceBetween: 30,
       loop: true,
       allowTouchMove: true,
