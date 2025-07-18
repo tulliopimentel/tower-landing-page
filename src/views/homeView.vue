@@ -427,34 +427,38 @@ export default defineComponent({
     };
 
     const testimonialsSwiperOptions = {
-      slidesPerView: 3,
+      slidesPerView: 2, // Padrão para telas pequenas
       spaceBetween: 30,
       loop: true,
+      allowTouchMove: true,
+      speed: 4000,
+
       autoplay: {
-        delay: 4000,
+        delay: 3000,
         disableOnInteraction: false,
-      },
-      centeredSlides: true, // Adicionado para centralizar os slides ativos
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
+        reverseDirection: false,
       },
 
       breakpoints: {
-        1024: {
-          slidesPerView: 3,
+        // Para telas maiores que 992px (desktops), exibe 3 cards
+        992: {
+          slidesPerView: 1,
           spaceBetween: 30,
-          centeredSlides: true, // Adicionado para este breakpoint
         },
+        // Para telas entre 768px e 991px (tablets maiores), exibe 1 card
         768: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-          centeredSlides: true, // Adicionado para este breakpoint
+          slidesPerView: 1,
+          spaceBetween: 30,
         },
+        // Para telas entre 576px e 767px (mobile paisagem), exibe 1 card
+        576: {
+          slidesPerView: 1,
+          spaceBetween: 30,
+        },
+        // Para telas menores que 576px (mobile retrato), exibe 1 card
         0: {
           slidesPerView: 1,
-          spaceBetween: 10,
-          centeredSlides: true, // Adicionado para este breakpoint
+          spaceBetween: 30
         },
       },
     };
@@ -465,8 +469,8 @@ export default defineComponent({
       closeMenu,
       people,
       swiperOptions,
-      testimonials, // Adicione os depoimentos
-      testimonialsSwiperOptions, // Adicione as opções do Swiper para depoimentos
+      testimonials,
+      testimonialsSwiperOptions,
       portfolioTitle,
       parallaxTitleWrapper
     };
