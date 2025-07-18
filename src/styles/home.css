@@ -325,7 +325,7 @@ body.no-scroll {
 }
 
 .impact-card {
-  background-color: var(--color-dark-card-background);
+  background-color: var(--color-dark-background);
   border-radius: var(--border-radius-xl);
   padding: var(--spacing-xl) var(--spacing-xxl);
   text-align: center;
@@ -361,7 +361,7 @@ body.no-scroll {
 .impact-card:hover {
   transform: translateY(-8px) scale(1.02);
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
-  background-color: var(--color-dark-card-background-hover);
+  background-color: var(--color-dark-background-hover);
 }
 
 .impact-card:hover::before {
@@ -545,7 +545,7 @@ body.no-scroll {
 }
 
 .service-card {
-  background-color: var(--color-dark-card-background);
+  background-color: var(--color-dark-background);
   border-radius: var(--border-radius-xl);
   padding: var(--spacing-xxl);
   text-align: left;
@@ -579,7 +579,7 @@ body.no-scroll {
 .service-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
-  background-color: var(--color-dark-card-background-hover);
+  background-color: var(--color-dark-background-hover);
 }
 
 .service-card:hover::before {
@@ -825,7 +825,7 @@ body.no-scroll {
 }
 
 .testimonial-card {
-  background-color: var(--color-dark-card-background);
+  background-color: var(--color-dark-background);
   border-radius: var(--border-radius-xl);
   padding: var(--spacing-xxl);
   text-align: left;
@@ -858,7 +858,7 @@ body.no-scroll {
 .testimonial-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
-  background-color: var(--color-dark-card-background-hover);
+  background-color: var(--color-dark-background-hover);
 }
 
 .testimonial-card:hover::before {

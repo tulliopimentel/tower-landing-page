@@ -435,7 +435,7 @@ export default defineComponent({
           spaceBetween: 15,
         },
         0: {
-          slidesPerView: 2,
+          slidesPerView: 1.6,
           spaceBetween: 0
         },
       },
