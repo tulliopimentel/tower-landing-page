@@ -168,7 +168,7 @@
             <h3 class="portfolio-videos-title">Portfolio</h3>
             <div class="video-responsive">
               <iframe
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                src="https://www.youtube.com/embed/your_video_id"
                 title="Melhores momentos de edição de vídeo - Portfólio Tower Studio"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -207,7 +207,7 @@
               </div>
               <p class="testimonial-text">{{ testimonial.text }}</p>
               <div class="testimonial-rating">
-                <span v-for="star in testimonial.rating" :key="star" class="star">&#9733;</span>
+                <span v-for="star in testimonial.rating" :key="star" class="star">★</span>
               </div>
             </article>
           </swiper-slide>
@@ -394,27 +394,12 @@ export default defineComponent({
       spaceBetween: 30,
       loop: true,
       allowTouchMove: true,
-      speed: 10000,
+      speed: 4000,
 
       autoplay: {
         delay: 0,
         disableOnInteraction: false,
         reverseDirection: false,
-      },
-
-      freeMode: {
-        enabled: true,
-        sticky: false,
-        momentum: false,
-      },
-
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
       },
 
       breakpoints: {
@@ -431,11 +416,11 @@ export default defineComponent({
           spaceBetween: 20,
         },
         576: {
-          slidesPerView: 2,
+          slidesPerView: 3,
           spaceBetween: 15,
         },
         0: {
-          slidesPerView: 1.6,
+          slidesPerView: 3,
           spaceBetween: 0
         },
       },
@@ -446,29 +431,30 @@ export default defineComponent({
       spaceBetween: 30,
       loop: true,
       autoplay: {
-        delay: 5000,
+        delay: 4000,
         disableOnInteraction: false,
       },
+      centeredSlides: true, // Adicionado para centralizar os slides ativos
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
       },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
+
       breakpoints: {
         1024: {
           slidesPerView: 3,
           spaceBetween: 30,
+          centeredSlides: true, // Adicionado para este breakpoint
         },
         768: {
           slidesPerView: 2,
           spaceBetween: 20,
+          centeredSlides: true, // Adicionado para este breakpoint
         },
         0: {
           slidesPerView: 1,
           spaceBetween: 10,
+          centeredSlides: true, // Adicionado para este breakpoint
         },
       },
     };

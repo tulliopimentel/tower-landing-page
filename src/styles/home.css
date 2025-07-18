@@ -84,6 +84,11 @@ html, body {
   scroll-behavior: smooth;
 }
 
+body {
+  width: 100%;
+  overflow-x: hidden; /* Já estava, apenas para reforçar */
+}
+
 *,
 *::before,
 *::after {
@@ -139,6 +144,15 @@ body.no-scroll {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+  }
+
+  .testimonials-section {
+    padding: var(--spacing-5xl) var(--spacing-large);
+  }
+  .testimonials-section .section-title {
+    font-size: var(--font-size-7xl);
+    /* No max-width: 768px, pode ser útil ajustar o max-width do h2 também */
+    max-width: 90%; /* ou um valor fixo menor */
   }
 }
 
@@ -415,7 +429,7 @@ body.no-scroll {
   position: relative;
   box-sizing: border-box;
   overflow-x: hidden;
-  padding: 0 16px;
+  padding: 0 16px; /* Este já tem padding horizontal */
 }
 
 .logo-item {
@@ -789,14 +803,14 @@ body.no-scroll {
 }
 
 /* TESTIMONIALS SECTION */
-.testimonials-section {
-  background-color: var(--color-dark-background);
-  color: var(--color-light-text-primary);
-  padding: var(--spacing-6xl) var(--spacing-large);
-  text-align: center;
-  max-width: 1200px;
-  margin: 0 auto;
-}
+ .testimonials-section {
+   background-color: var(--color-dark-background);
+   color: var(--color-light-text-primary);
+   padding: var(--spacing-6xl) var(--spacing-large);
+   text-align: center;
+   max-width: 1200px;
+   margin: 0 auto;
+ }
 
 .testimonials-section .section-tag {
   font-size: var(--font-size-xs);
@@ -813,7 +827,11 @@ body.no-scroll {
   margin-bottom: var(--spacing-4xl);
   font-weight: var(--font-weight-bold);
   color: var(--color-light-text-primary);
-  line-height: var(--line-height-normal);
+  line-height: var(--line-height-medium); /* Mantém a alteração para 1.4 */
+  overflow-wrap: break-word; /* Mantém a adição */
+  max-width: 900px; /* Limita a largura máxima do H2 para forçar a quebra em telas maiores, se necessário */
+  margin-left: auto; /* Centraliza o H2 com o max-width */
+  margin-right: auto; /* Centraliza o H2 com o max-width */
 }
 
 .testimonials-carousel {
@@ -821,7 +839,8 @@ body.no-scroll {
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
-  padding: var(--spacing-medium) 0; /* Adiciona padding vertical para as setas e paginação não "comerem" o card */
+  /* Mantém o padding horizontal adicionado anteriormente para espaçamento visual */
+  padding: var(--spacing-medium) var(--spacing-large);
 }
 
 .testimonial-card {
@@ -1120,7 +1139,8 @@ body.no-scroll {
   .hero-image {
     max-width: 80%;
     width: auto;
-    margin-left: 0;
+    /* Linha modificada para centralizar a imagem */
+    margin: 0 auto;
   }
 
   .logos-carousel {
@@ -1152,10 +1172,16 @@ body.no-scroll {
     font-size: var(--font-size-small);
   }
 
-  .services-section .section-title,
-  .testimonials-section .section-title { /* Adicionado para depoimentos */
+  .services-section .section-title { /* Adicionado para depoimentos */
     font-size: var(--font-size-9xl);
     margin-bottom: var(--spacing-3xl);
+  }
+
+  .testimonials-section .section-title {
+    font-size: var(--font-size-9xl);
+    margin-bottom: var(--spacing-3xl);
+    /* No max-width: 992px, pode ser útil ajustar o max-width do h2 também */
+    max-width: 700px;
   }
 
   .services-grid {
@@ -1409,13 +1435,19 @@ body.no-scroll {
     font-size: var(--font-size-small);
   }
 
-  .services-section {
-    padding: var(--spacing-5xl) var(--spacing-large);
+  .services-section .section-title { /* Adicionado para depoimentos */
+    font-size: var(--font-size-7xl);
   }
 
-  .services-section .section-title,
-  .testimonials-section .section-title { /* Adicionado para depoimentos */
+   .testimonials-section {
+     padding-left: var(--spacing-small); /* Reduzindo ainda mais o padding esquerdo */
+     padding-right: var(--spacing-small); /* Reduzindo ainda mais o padding direito */
+   }
+
+  .testimonials-section .section-title {
     font-size: var(--font-size-7xl);
+    /* No max-width: 768px, pode ser útil ajustar o max-width do h2 também */
+    max-width: 90%; /* ou um valor fixo menor */
   }
 
   .services-grid {
@@ -1450,7 +1482,7 @@ body.no-scroll {
 
   .portfolio-description {
     text-align: justify;
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-medium);
   }
 
   .video-responsive {
@@ -1501,6 +1533,17 @@ body.no-scroll {
 @media (max-width: 480px) {
   html, body {
     padding-top: 85px;
+  }
+
+   .testimonials-section {
+     padding-left: var(--spacing-xxs); /* Reduzindo o padding esquerdo para o mínimo */
+     padding-right: var(--spacing-xxs); /* Reduzindo o padding direito para o mínimo */
+   }
+
+  .testimonials-section .section-title {
+    font-size: var(--font-size-5xl);
+    /* No max-width: 480px, mantenha o max-width percentual ou ajuste para um valor menor */
+    max-width: 95%; /* Dando mais espaço ao conteúdo */
   }
 
   .main-nav {
@@ -1554,7 +1597,7 @@ body.no-scroll {
   }
 
   .logo-item {
-    width: 45%;
+    width: 75%;
     max-width: 100px;
     min-width: unset;
     padding: var(--spacing-small) 0;
