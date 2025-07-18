@@ -27,7 +27,7 @@
         <div class="hero-text">
           <h1 class="hero-title">Dê vida aos seus vídeos</h1>
           <p class="hero-subtitle">
-            <span class="highlight">Se preocupe somente em gravar</span> e deixe a Edição Profissional com a gente!
+            <span class="highlight">Se preocupe somente em gravar,</span> e deixe a Edição Profissional com a gente!
           </p>
           <div class="hero-actions">
             <a href="https://wa.me/5518997762278?text=Olá, gostaria de solicitar um orçamento para edição de video" target="_blank" class="btn btn-primary" rel="noopener noreferrer" title="Solicitar Orçamento de Edição de Vídeo via WhatsApp">
