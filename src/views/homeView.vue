@@ -22,8 +22,6 @@
       </div>
     </header>
 
-    <div class="mobile-menu-overlay" :class="{ 'is-open': isMenuOpen }" @click="closeMenu" aria-hidden="true"></div>
-
     <main class="hero-section">
       <div class="hero-container">
         <div class="hero-text">
@@ -267,13 +265,8 @@ export default defineComponent({
     const portfolioTitle = ref(null);
     const parallaxTitleWrapper = ref(null);
 
-    watch(isMenuOpen, (newValue) => {
-      console.log('isMenuOpen CHANGED:', newValue);
-    });
-
     const toggleMenu = () => {
       isMenuOpen.value = !isMenuOpen.value;
-      console.log('Hamburger clicked! isMenuOpen state:', isMenuOpen.value);
       if (isMenuOpen.value) {
         document.body.classList.add('no-scroll');
       } else {
@@ -284,15 +277,22 @@ export default defineComponent({
     const closeMenu = (event) => {
       const isNavLink = event && event.target && event.target.tagName === 'A' && event.target.closest('.main-nav');
       const href = isNavLink ? event.target.getAttribute('href') : null;
-
+      
       if (isNavLink && href && href.startsWith('#')) {
         event.preventDefault();
+        const targetElement = document.querySelector(href);
+        if (targetElement) {
+          const headerOffset = 105;
+          const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({
+            top: elementPosition - headerOffset,
+            behavior: 'smooth'
+          });
+        }
       }
 
       isMenuOpen.value = false;
       document.body.classList.remove('no-scroll');
-
-      console.log('Overlay or menu item clicked! isMenuOpen state:', isMenuOpen.value);
 
       if (isNavLink && href) {
         setTimeout(() => {
