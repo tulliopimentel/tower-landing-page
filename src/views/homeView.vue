@@ -1,6 +1,6 @@
 <template>
   <div class="landing-page" id="home">
-    <header class="header" :class="{ 'is-scrolled': isHeaderScrolled }">
+    <header class="header">
       <div class="container">
         <a href="#home" class="logo" aria-label="Voltar para o início - Logotipo Tower Studio">
           <img src="@/assets/TOWER-PERFIL.png" alt="Tower Studio - Edição de Vídeos, Gravações e Motion Graphics" loading="lazy" width="150" height="50"/>
@@ -232,9 +232,7 @@
       </section>
       </main>
 
-    <a class="whatsapp-float" href="https://wa.me/5518997762278?text=Quero aumentar meus resultados com vídeos!" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19.11 17.38c-.28-.14-1.64-.81-1.89-.9-.25-.09-.43-.14-.61.14-.18.28-.7.9-.86 1.09-.16.19-.32.21-.6.07-.28-.14-1.17-.43-2.23-1.38-.82-.73-1.37-1.64-1.53-1.92-.16-.28-.02-.43.12-.57.12-.12.28-.32.42-.48.14-.16.18-.28.28-.47.09-.19.05-.35-.02-.5-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.46-.16 0-.35-.02-.54-.02-.19 0-.5.07-.76.35-.26.28-1 1-1 2.43 0 1.43 1.03 2.81 1.18 3 .14.19 2.03 3.11 4.92 4.37.69.3 1.23.48 1.65.62.69.22 1.33.19 1.82.12.55-.08 1.64-.67 1.87-1.32.23-.65.23-1.21.16-1.32-.07-.11-.25-.18-.53-.32zM16 3C8.83 3 3 8.83 3 16c0 2.3.62 4.47 1.69 6.33L3 29l6.82-1.79C11.6 28.24 13.73 29 16 29c7.18 0 13-5.82 13-13S23.18 3 16 3zM16 26.92c-2.16 0-4.16-.7-5.78-1.89l-.41-.29-4.04 1.06 1.08-3.94-.3-.41C5.38 20.81 4.69 18.88 4.69 16 4.69 9.94 9.94 4.69 16 4.69S27.31 9.94 27.31 16 22.06 27.31 16 26.92z"></path></svg>
-    </a>
+    
 
     <div class="sticky-cta-bar" :class="{ 'is-visible': stickyCtaVisible }" role="region" aria-label="Barra de chamada para ação">
       <span class="text">Pronto para elevar seus vídeos?</span>
@@ -308,6 +306,7 @@ export default defineComponent({
   setup() {
     const isMenuOpen = ref(false);
     const headerEl = ref(null);
+    const stickyCtaVisible = ref(false);
 
     const toggleMenu = () => {
       isMenuOpen.value = !isMenuOpen.value;
@@ -316,6 +315,7 @@ export default defineComponent({
       } else {
         document.body.classList.remove('no-scroll');
       }
+      updateStickyCta();
     };
 
     const closeMenu = (event) => {
@@ -355,6 +355,12 @@ export default defineComponent({
           }
         }, 300);
       }
+    };
+
+    const updateStickyCta = () => {
+      const threshold = 600;
+      const shouldShow = window.scrollY > threshold;
+      stickyCtaVisible.value = shouldShow && !isMenuOpen.value;
     };
 
     const people = [
@@ -489,12 +495,14 @@ export default defineComponent({
       await nextTick();
       equalizeTestimonialHeights();
       window.addEventListener('resize', equalizeTestimonialHeights);
+      window.addEventListener('resize', updateStickyCta);
       // Header scroll state
       const header = document.querySelector('.header');
       const onScroll = () => {
         if (!header) return;
         if (window.scrollY > 10) header.classList.add('is-scrolled');
         else header.classList.remove('is-scrolled');
+        updateStickyCta();
       };
       onScroll();
       window.addEventListener('scroll', onScroll, { passive: true });
@@ -504,6 +512,7 @@ export default defineComponent({
 
     onUnmounted(() => {
       window.removeEventListener('resize', equalizeTestimonialHeights);
+      window.removeEventListener('resize', updateStickyCta);
       if (headerEl.value && headerEl.value.onScroll) {
         window.removeEventListener('scroll', headerEl.value.onScroll);
       }
@@ -511,7 +520,6 @@ export default defineComponent({
 
     return {
       isMenuOpen,
-      isHeaderScrolled,
       stickyCtaVisible,
       toggleMenu,
       closeMenu,
