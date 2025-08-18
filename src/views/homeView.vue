@@ -150,11 +150,9 @@
       <section class="portfolio-section" id="portfolio" aria-labelledby="portfolio-title">
         <div class="portfolio-header">
           <p class="section-tag">/ NOSSO PORTFÓLIO /</p>
-          <div class="parallax-title-wrapper" ref="parallaxTitleWrapper">
-            <h2 id="portfolio-title" class="section-title portfolio-title" ref="portfolioTitle">
-              Confira alguns dos projetos de sucesso produzidos pela <span class="highlight">Tower Studio</span>
-            </h2>
-          </div>
+          <h2 id="portfolio-title" class="section-title portfolio-title">
+            Confira alguns dos projetos de sucesso produzidos pela <span class="highlight">Tower Studio</span>
+          </h2>
         </div>
 
         <div class="portfolio-content">
@@ -248,7 +246,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, watch, onMounted, onUnmounted } from 'vue';
+import { defineComponent, ref, onMounted, onUnmounted, nextTick } from 'vue';
 import { register } from 'swiper/element/bundle';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -263,8 +261,6 @@ export default defineComponent({
   name: 'HomeView',
   setup() {
     const isMenuOpen = ref(false);
-    const portfolioTitle = ref(null);
-    const parallaxTitleWrapper = ref(null);
 
     const toggleMenu = () => {
       isMenuOpen.value = !isMenuOpen.value;
@@ -314,38 +310,7 @@ export default defineComponent({
       }
     };
 
-    const handleScroll = () => {
-      if (portfolioTitle.value && parallaxTitleWrapper.value) {
-        const scrollY = window.scrollY;
-        const sectionRect = parallaxTitleWrapper.value.getBoundingClientRect();
-        const sectionTop = sectionRect.top + scrollY;
-        const sectionHeight = sectionRect.height;
-
-        const viewportHeight = window.innerHeight;
-        const startScroll = sectionTop - viewportHeight;
-        const endScroll = sectionTop + sectionHeight;
-
-        if (scrollY > startScroll && scrollY < endScroll) {
-          const scrollProgress = (scrollY - startScroll) / (endScroll - startScroll);
-          const parallaxSpeed = 0.3;
-          const translateY = scrollProgress * 50 * parallaxSpeed;
-          portfolioTitle.value.style.transform = `translateY(${translateY}px)`;
-        } else if (scrollY <= startScroll) {
-          portfolioTitle.value.style.transform = `translateY(0px)`;
-        } else if (scrollY >= endScroll) {
-          const parallaxOffsetAtEnd = (endScroll - startScroll) / (endScroll - startScroll) * 50 * parallaxSpeed;
-          portfolioTitle.value.style.transform = `translateY(${parallaxOffsetAtEnd}px)`;
-        }
-      }
-    };
-
-    onMounted(() => {
-      window.addEventListener('scroll', handleScroll);
-    });
-
-    onUnmounted(() => {
-      window.removeEventListener('scroll', handleScroll);
-    });
+    
 
     const people = [
       { image: new URL('@/assets/super_xandao.png', import.meta.url).href, alt: 'Super Xandão - Parceiro da Tower Studio', name: 'Super Xandão' },
@@ -460,6 +425,31 @@ export default defineComponent({
       },
     };
 
+    const equalizeTestimonialHeights = () => {
+      const cards = document.querySelectorAll('.testimonials-carousel .testimonial-card');
+      let maxHeight = 0;
+      cards.forEach(card => {
+        card.style.height = 'auto';
+      });
+      cards.forEach(card => {
+        const h = card.getBoundingClientRect().height;
+        if (h > maxHeight) maxHeight = h;
+      });
+      cards.forEach(card => {
+        card.style.height = `${maxHeight}px`;
+      });
+    };
+
+    onMounted(async () => {
+      await nextTick();
+      equalizeTestimonialHeights();
+      window.addEventListener('resize', equalizeTestimonialHeights);
+    });
+
+    onUnmounted(() => {
+      window.removeEventListener('resize', equalizeTestimonialHeights);
+    });
+
     return {
       isMenuOpen,
       toggleMenu,
@@ -468,8 +458,7 @@ export default defineComponent({
       swiperOptions,
       testimonials,
       testimonialsSwiperOptions,
-      portfolioTitle,
-      parallaxTitleWrapper
+      equalizeTestimonialHeights,
     };
   },
 });

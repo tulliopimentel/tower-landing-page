@@ -713,11 +713,7 @@ body.no-scroll {
   display: block;
 }
 
-.parallax-title-wrapper {
-  overflow: hidden;
-  display: inline-block;
-  vertical-align: middle;
-}
+
 
 .portfolio-title {
   font-size: var(--font-size-12xl);
@@ -853,6 +849,11 @@ body.no-scroll {
   padding: var(--spacing-medium) var(--spacing-large);
 }
 
+.testimonials-carousel .swiper-slide {
+  display: flex;
+  align-items: stretch;
+}
+
 .testimonial-card {
   background-color: var(--color-dark-background);
   border-radius: var(--border-radius-xl);
@@ -863,7 +864,7 @@ body.no-scroll {
   transition: transform var(--transition-card-hover), box-shadow var(--transition-card-hover), background-color var(--transition-card-hover);
   position: relative;
   overflow: hidden;
-  height: auto; /* Permite que o card se ajuste ao conteúdo */
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
