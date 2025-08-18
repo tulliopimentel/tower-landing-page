@@ -19,16 +19,28 @@
             <li><a href="#testimonials" @click="closeMenu" aria-label="Ir para a seção Depoimentos">Depoimentos</a></li>
           </ul>
         </nav>
+        <div class="header-cta">
+          <a href="https://wa.me/5518997762278?text=Olá!%20Quero%20impulsionar%20meus%20vídeos.%20Pode%20me%20ajudar%3F" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-whatsapp" title="Falar no WhatsApp">
+            FALAR NO WHATSAPP
+          </a>
+        </div>
       </div>
     </header>
 
     <main class="hero-section">
       <div class="hero-container">
         <div class="hero-text">
+          <p class="hero-eyebrow">Edição de alto impacto para quem vive de conteúdo</p>
           <h1 class="hero-title">Dê vida aos seus vídeos</h1>
           <p class="hero-subtitle">
             <span class="highlight">Se preocupe somente em gravar,</span> e deixe a Edição Profissional com a gente!
           </p>
+          <ul class="trust-badges" aria-label="Benefícios e diferenciais">
+            <li>Entrega ágil</li>
+            <li>Qualidade aprovada por criadores</li>
+            <li>Roteiro e estratégia incluídos</li>
+            <li>Orçamento sem compromisso</li>
+          </ul>
           <div class="hero-actions">
             <a href="https://wa.me/5518997762278?text=Olá, gostaria de solicitar um orçamento para edição de video" target="_blank" class="btn btn-primary" rel="noopener noreferrer" title="Solicitar Orçamento de Edição de Vídeo via WhatsApp">
               SOLICITAR ORÇAMENTO
@@ -242,6 +254,23 @@
         <p>© {{ new Date().getFullYear() }} Tower Studio. Todos os direitos reservados.</p>
       </div>
     </footer>
+    <a
+      href="https://wa.me/5518997762278?text=Olá!%20Quero%20falar%20com%20a%20Tower%20Studio"
+      class="whatsapp-float"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Abrir conversa no WhatsApp"
+      title="Falar no WhatsApp"
+    >
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <path d="M27.5 4.5C24.6 1.6 20.6 0 16.3 0 7.3 0 .1 7.2.1 16.1c0 2.8.7 5.4 2 7.8L0 32l8.3-2.2c2.3 1.2 4.9 1.8 7.6 1.8 9 0 16.2-7.2 16.2-16.1 0-4.3-1.7-8.3-4.6-11.2zM16 29.1c-2.4 0-4.7-.6-6.7-1.7l-.5-.3-4.9 1.3 1.3-4.8-.3-.5c-1.2-2.1-1.8-4.5-1.8-6.9C3.1 8.8 9.1 2.9 16.3 2.9c3.5 0 6.7 1.4 9.2 3.8 2.5 2.5 3.9 5.7 3.9 9.2 0 7.2-6 13.2-13.4 13.2zm7.8-9.9c-.4-.2-2.3-1.1-2.6-1.2-.3-.1-.5-.2-.7.2s-.8 1.2-1 1.5c-.2.3-.4.3-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.2-2.6-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.6.1-.2 0-.5 0-.7 0-.2-.7-1.8-1-2.5-.3-.7-.5-.6-.7-.6h-.6c-.2 0-.7.1-1.1.5-.4.4-1.5 1.5-1.5 3.6s1.6 4.2 1.8 4.5c.2.3 3.2 4.9 7.8 6.7.9.4 1.6.6 2.2.9.9.3 1.7.3 2.3.2.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.7.2-1.8-.1-.1-.3-.2-.7-.4z" fill="#fff"/>
+      </svg>
+    </a>
+    <div class="sticky-cta-mobile" role="region" aria-label="CTA fixo no mobile">
+      <a href="https://wa.me/5518997762278?text=Olá!%20Quero%20um%20orçamento%20rápido" target="_blank" rel="noopener noreferrer" class="btn btn-primary" title="Solicitar orçamento rápido pelo WhatsApp">
+        FALAR NO WHATSAPP
+      </a>
+    </div>
   </div>
 </template>
 
