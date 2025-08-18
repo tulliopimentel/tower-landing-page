@@ -5,6 +5,7 @@
   /* Cores */
   --color-company: #FF0055; /* Cor de destaque principal */
   --color-dark-background: #1E1E24; /* Fundo escuro principal */
+  --color-dark-background-hover: #24242B; /* Fundo escuro em hover (sutil) */
   --color-dark-card-background: #2a2a2a; /* Fundo dos cards (impacto, serviço, depoimento) */
   --color-dark-card-background-hover: #353535; /* Fundo dos cards no hover */
   --color-light-text-primary: #f0f0f0; /* Texto claro principal */
@@ -67,7 +68,12 @@
   /* Transições */
   --transition-default: all 0.3s ease;
   --transition-slow: 0.3s ease-out; /* Para before dos cards */
-  --transition-card-hover: 0.6s ease; /* Nova variável para transição dos cards no hover */
+  --transition-card-hover: 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  --easing-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Sombras modernas */
+  --shadow-elev-1: 0 6px 16px rgba(0, 0, 0, 0.24);
+  --shadow-elev-2: 0 12px 25px rgba(0, 0, 0, 0.35);
 
   /* Line Heights */
   --line-height-tight: 1.1;
@@ -76,6 +82,11 @@
   --line-height-medium: 1.4;
   --line-height-relaxed: 1.6;
   --line-height-extra-relaxed: 1.5;
+
+  /* Alturas padrão dos cards de depoimentos */
+  --testimonial-card-height-desktop: 460px;
+  --testimonial-card-height-tablet: 420px;
+  --testimonial-card-height-mobile: 360px;
 }
 
 html, body {
@@ -113,6 +124,15 @@ body.no-scroll {
   top: 0;
   left: 0;
   z-index: 100;
+  transition: background-color 0.3s var(--easing-smooth), box-shadow 0.3s var(--easing-smooth), border-color 0.3s var(--easing-smooth);
+}
+
+.header.is-scrolled {
+  background-color: rgba(30, 30, 36, 0.75);
+  backdrop-filter: saturate(180%) blur(10px);
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
 .header.is-scrolled {
@@ -131,6 +151,16 @@ body.no-scroll {
   justify-content: flex-start;
 }
 
+.header-cta {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+}
+
+.header-cta i {
+  font-style: normal;
+}
+
 .logo {
   flex-shrink: 0;
   margin-right: var(--spacing-xxl);
@@ -144,6 +174,7 @@ body.no-scroll {
 .main-nav {
   transition: var(--transition-default);
   z-index: 1000;
+  overflow: hidden; /* evita segunda barra de rolagem quando fechado */
 }
 
 @media (min-width: 769px) {
@@ -176,12 +207,17 @@ body.no-scroll {
   color: var(--color-light-text-primary);
   font-weight: var(--font-weight-bold);
   font-size: 16px;
-  transition: var(--transition-default);
+  transition: color 0.25s var(--easing-smooth), background-size 0.25s var(--easing-smooth), transform 0.25s var(--easing-smooth);
   white-space: nowrap;
+  background-image: linear-gradient(var(--color-company), var(--color-company));
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
 }
 
 .main-nav li a:hover {
   color: var(--color-company);
+  background-size: 100% 2px;
 }
 
 .header-cta {
@@ -220,6 +256,7 @@ body.no-scroll {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+
 }
 
 .mobile-menu-overlay.is-open {
@@ -229,7 +266,9 @@ body.no-scroll {
 }
 
 .hero-section {
-  background-color: var(--color-dark-background);
+  background:
+    radial-gradient(1200px 600px at 85% -10%, rgba(255, 0, 85, 0.06), rgba(255, 0, 85, 0) 60%),
+    linear-gradient(180deg, #1E1E24 0%, #1B1B22 100%);
   color: var(--color-light-text-primary);
   padding: 0 var(--spacing-large) var(--spacing-6xl);
   display: flex;
@@ -276,6 +315,30 @@ body.no-scroll {
   color: var(--color-light-text-secondary);
   line-height: var(--line-height-medium);
   margin-bottom: var(--spacing-3xl);
+}
+
+.hero-bullets {
+  margin: 0 0 var(--spacing-4xl) 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-medium) var(--spacing-xxl);
+}
+
+.hero-bullets li {
+  color: var(--color-light-text-tertiary);
+  font-size: var(--font-size-medium);
+  position: relative;
+  padding-left: 28px;
+}
+
+.hero-bullets li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--color-company);
 }
 
 .highlight {
@@ -335,7 +398,7 @@ body.no-scroll {
   font-weight: var(--font-weight-semibold);
   cursor: pointer;
   text-decoration: none;
-  transition: var(--transition-default);
+  transition: transform 0.25s var(--easing-smooth), box-shadow 0.25s var(--easing-smooth), background-color 0.25s var(--easing-smooth), color 0.25s var(--easing-smooth);
   white-space: nowrap;
   position: relative;
   overflow: hidden;
@@ -349,6 +412,7 @@ body.no-scroll {
 .btn-primary:hover {
   background-color: var(--color-btn-primary-hover);
   transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(255, 0, 85, 0.35);
 }
 
 .btn-secondary {
@@ -361,6 +425,12 @@ body.no-scroll {
   background-color: var(--color-company);
   color: #fff;
   transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(255, 0, 85, 0.25);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
 }
 
 /* Shine hover animation */
@@ -408,6 +478,12 @@ body.no-scroll {
   height: auto;
   border-radius: var(--border-radius-xl);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  transition: transform 0.6s var(--easing-smooth), box-shadow 0.6s var(--easing-smooth);
+}
+
+.hero-image:hover img {
+  transform: scale(1.03) rotate(-1deg);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.5);
 }
 
 .hero-image {
@@ -455,7 +531,7 @@ body.no-scroll {
   flex: 1;
   min-width: 250px;
   max-width: 350px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-elev-1);
   /* AQUI É A MUDANÇA: Usando a nova variável de transição */
   transition: transform var(--transition-card-hover), box-shadow var(--transition-card-hover), background-color var(--transition-card-hover);
   display: flex;
@@ -464,6 +540,21 @@ body.no-scroll {
   align-items: center;
   position: relative;
   overflow: hidden;
+  will-change: transform, box-shadow;
+}
+
+.impact-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255,0,85,0.35), rgba(255,0,85,0));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .impact-card::before {
@@ -482,7 +573,7 @@ body.no-scroll {
 
 .impact-card:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-elev-2);
   background-color: var(--color-dark-background-hover);
 }
 
@@ -692,7 +783,7 @@ body.no-scroll {
   padding: var(--spacing-xxl);
   text-align: left;
   color: var(--color-light-text-primary);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-elev-1);
   /* AQUI É A MUDANÇA: Usando a nova variável de transição */
   transition: transform var(--transition-card-hover), box-shadow var(--transition-card-hover), background-color var(--transition-card-hover);
   position: relative;
@@ -702,6 +793,7 @@ body.no-scroll {
   flex-direction: column;
   justify-content: flex-start;
   min-height: 200px;
+  will-change: transform, box-shadow;
 }
 
 .service-card::before {
@@ -720,7 +812,7 @@ body.no-scroll {
 
 .service-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-elev-2);
   background-color: var(--color-dark-background-hover);
 }
 
@@ -913,6 +1005,7 @@ body.no-scroll {
   margin-bottom: var(--spacing-xxl);
   border-radius: var(--border-radius-xl);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.6s var(--easing-smooth), transform 0.6s var(--easing-smooth);
 }
 
 .video-responsive iframe,
@@ -924,6 +1017,19 @@ body.no-scroll {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.video-responsive:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.55);
+}
+
+/* Separadores entre seções */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,0,85,0.35), rgba(255,255,255,0));
+  margin: var(--spacing-5xl) 0;
 }
 
 /* TESTIMONIALS SECTION */
@@ -985,7 +1091,7 @@ body.no-scroll {
   padding: var(--spacing-xxl);
   text-align: left;
   color: var(--color-light-text-primary);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-elev-1);
   transition: transform var(--transition-card-hover), box-shadow var(--transition-card-hover), background-color var(--transition-card-hover);
   position: relative;
   overflow: hidden;
@@ -993,7 +1099,7 @@ body.no-scroll {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  min-height: 250px; /* Garante uma altura mínima para todos os cards */
+  will-change: transform, box-shadow;
 }
 
 .testimonial-card::before {
@@ -1012,7 +1118,7 @@ body.no-scroll {
 
 .testimonial-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-elev-2);
   background-color: var(--color-dark-background-hover);
 }
 
@@ -1057,7 +1163,13 @@ body.no-scroll {
   color: var(--color-light-text-tertiary);
   line-height: var(--line-height-relaxed);
   margin-bottom: var(--spacing-large);
-  flex-grow: 1; /* Permite que o texto ocupe o espaço disponível */
+  flex-grow: 1;
+  /* Mantém todos os cards com a mesma altura, cortando texto extra de forma elegante */
+  display: -webkit-box;
+  -webkit-line-clamp: 9;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .testimonial-rating {
@@ -1212,16 +1324,90 @@ body.no-scroll {
   color: var(--color-light-text-secondary);
   text-decoration: none;
   font-size: var(--font-size-small);
-  transition: var(--transition-default);
+  transition: color 0.25s var(--easing-smooth), transform 0.25s var(--easing-smooth);
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  background-image: linear-gradient(var(--color-company), var(--color-company));
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
 }
 
 .footer-nav a:hover,
 .social-links a:hover {
   color: var(--color-company);
   transform: translateX(5px);
+  background-size: 100% 2px;
+}
+
+/* Barra fixa de CTA (aparece ao rolar) */
+.sticky-cta-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-large);
+  padding: 12px var(--spacing-large);
+  background: rgba(30,30,36,0.9);
+  backdrop-filter: saturate(180%) blur(8px);
+  -webkit-backdrop-filter: saturate(180%) blur(8px);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  transform: translateY(110%);
+  transition: transform 0.4s var(--easing-smooth);
+  z-index: 1100;
+}
+
+.sticky-cta-bar.is-visible {
+  transform: translateY(0);
+}
+
+.sticky-cta-bar .text {
+  color: var(--color-light-text-primary);
+  font-size: var(--font-size-medium);
+}
+
+body.no-scroll .sticky-cta-bar { display: none; }
+
+/* Botão flutuante do WhatsApp */
+.whatsapp-float {
+  position: fixed;
+  right: 24px;
+  bottom: 90px;
+  z-index: 1101;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-company);
+  color: #fff;
+  box-shadow: 0 12px 24px rgba(255,0,85,0.35);
+  transition: transform 0.25s var(--easing-smooth), box-shadow 0.25s var(--easing-smooth);
+}
+
+.whatsapp-float:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 16px 32px rgba(255,0,85,0.45); }
+.whatsapp-float:active { transform: translateY(0) scale(1.0); }
+
+.whatsapp-float svg { width: 26px; height: 26px; fill: #fff; }
+
+.whatsapp-float::after {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  animation: pulse-glow 2.2s infinite;
+  border: 1px solid rgba(255,0,85,0.35);
+}
+
+@keyframes pulse-glow {
+  0% { opacity: 0.7; transform: scale(0.95); }
+  70% { opacity: 0; transform: scale(1.35); }
+  100% { opacity: 0; transform: scale(1.35); }
 }
 
 .social-links p {
@@ -1359,6 +1545,7 @@ body.no-scroll {
   width: 60%;
   max-width: none;
   text-align: center;
+
 }
 
 /* MEDIA QUERIES */
@@ -1538,7 +1725,9 @@ body.no-scroll {
 
   .testimonial-card {
     padding: var(--spacing-xl);
+    height: var(--testimonial-card-height-tablet);
   }
+  .testimonial-text { -webkit-line-clamp: 8; }
 }
 
 @media (max-width: 768px) {
@@ -1582,7 +1771,7 @@ body.no-scroll {
     transition: var(--transition-default);
     z-index: 1000;
     transform: translateX(100%);
-    overflow-y: auto;
+    overflow-y: auto; /* rolagem interna apenas quando aberto */
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
@@ -1593,6 +1782,7 @@ body.no-scroll {
 
   .main-nav.is-open {
     transform: translateX(0%);
+    overflow-y: auto;
   }
 
   .main-nav ul {
@@ -1655,6 +1845,14 @@ body.no-scroll {
     width: 80%;
     max-width: 300px;
   }
+
+  .hero-bullets { grid-template-columns: 1fr; }
+
+  .header-cta { display: none; }
+  .main-nav .mobile-cta { display: block; width: 100%; }
+  /* Alinhamento do botão no menu mobile */
+  .main-nav .mobile-cta { display: flex; justify-content: center; }
+  .main-nav .mobile-cta .btn { width: 100%; max-width: none; text-align: center; justify-content: center;}
 
   .company-logo {
     height: var(--spacing-6xl);
@@ -1789,8 +1987,9 @@ body.no-scroll {
     margin: 0 auto;
     padding: var(--spacing-large);
     text-align: left;
-    min-height: 220px;
+    height: var(--testimonial-card-height-tablet);
   }
+  .testimonial-text { -webkit-line-clamp: 8; }
 
   .testimonial-name {
     font-size: var(--font-size-large);
@@ -1943,6 +2142,13 @@ body.no-scroll {
     font-size: var(--font-size-4xl);
   }
 
+  /* Centralizar botão da barra fixa no mobile (<=480px) */
+  .sticky-cta-bar { padding-left: var(--spacing-small); padding-right: var(--spacing-small); }
+  .sticky-cta-bar .btn { display: block; width: 60%; max-width: none; text-align: center; }
+
+  .sticky-cta-bar .text { display: none; }
+  .whatsapp-float { bottom: 80px; right: 18px; }
+
   /* Footer specific adjustments for smallest screens */
   .footer .container {
     padding: var(--spacing-xl) var(--spacing-small) var(--spacing-medium);
@@ -1969,8 +2175,9 @@ body.no-scroll {
 
   .testimonial-card {
     padding: var(--spacing-medium);
-    min-height: 200px;
+    height: var(--testimonial-card-height-mobile);
   }
+  .testimonial-text { -webkit-line-clamp: 7; }
 
   .testimonial-avatar {
     width: 50px;
