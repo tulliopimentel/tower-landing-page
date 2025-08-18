@@ -290,6 +290,7 @@ export default defineComponent({
   name: 'HomeView',
   setup() {
     const isMenuOpen = ref(false);
+    const headerEl = ref(null);
 
     const toggleMenu = () => {
       isMenuOpen.value = !isMenuOpen.value;
@@ -473,10 +474,24 @@ export default defineComponent({
       await nextTick();
       equalizeTestimonialHeights();
       window.addEventListener('resize', equalizeTestimonialHeights);
+      // Header scroll state
+      const header = document.querySelector('.header');
+      const onScroll = () => {
+        if (!header) return;
+        if (window.scrollY > 10) header.classList.add('is-scrolled');
+        else header.classList.remove('is-scrolled');
+      };
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+      // store for cleanup
+      headerEl.value = { onScroll };
     });
 
     onUnmounted(() => {
       window.removeEventListener('resize', equalizeTestimonialHeights);
+      if (headerEl.value && headerEl.value.onScroll) {
+        window.removeEventListener('scroll', headerEl.value.onScroll);
+      }
     });
 
     return {

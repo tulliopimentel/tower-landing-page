@@ -115,6 +115,13 @@ body.no-scroll {
   z-index: 100;
 }
 
+.header.is-scrolled {
+  background: rgba(30, 30, 36, 0.9);
+  backdrop-filter: saturate(140%) blur(6px);
+  padding: var(--spacing-small) 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
 .header .container {
   display: flex;
   align-items: center;
@@ -330,6 +337,8 @@ body.no-scroll {
   text-decoration: none;
   transition: var(--transition-default);
   white-space: nowrap;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-primary {
@@ -354,6 +363,32 @@ body.no-scroll {
   transform: translateY(-2px);
 }
 
+/* Shine hover animation */
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90px; /* largura fixa para controle preciso */
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.18) 50%, rgba(255,255,255,0) 100%);
+  transform: translateX(-10px) skewX(-20deg);
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.btn:hover::after {
+  animation: btn-shine 0.9s ease forwards;
+}
+
+@keyframes btn-shine {
+  0% { transform: translateX(-10px) skewX(-20deg); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateX(calc(100% + 120px)) skewX(-20deg); opacity: 0; }
+}
+
 .services-cta {
   text-align: center;
   margin-top: var(--spacing-3xl);
@@ -373,6 +408,30 @@ body.no-scroll {
   height: auto;
   border-radius: var(--border-radius-xl);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.hero-image {
+  position: relative;
+}
+
+.hero-image::after {
+  content: '';
+  position: absolute;
+  inset: -10%;
+  border-radius: var(--border-radius-xl);
+  background: radial-gradient(60% 60% at 50% 40%, rgba(255,0,85,0.18) 0%, rgba(255,0,85,0.08) 40%, rgba(255,0,85,0.0) 70%);
+  filter: blur(18px);
+  z-index: -1;
+  animation: hero-glow 6s ease-in-out infinite;
+}
+
+@keyframes hero-glow {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.06); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-image::after { animation: none; }
 }
 
 .impact-cards {
@@ -459,6 +518,26 @@ body.no-scroll {
   text-align: center;
   overflow: hidden;
   box-sizing: border-box;
+}
+
+/* Largura padrão dos títulos: 50% em telas grandes */
+.section-title {
+  width: 50vw;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 992px) {
+  .section-title {
+    width: 80vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    width: 90vw;
+  }
 }
 
 .company-logos p {
@@ -771,7 +850,7 @@ body.no-scroll {
   line-height: var(--line-height-tight);
   margin: 0 auto;
   padding: 0 var(--spacing-large);
-  display: inline-block;
+  display: block;
   transition: 0.1s linear;
 }
 
@@ -882,11 +961,8 @@ body.no-scroll {
   margin-bottom: var(--spacing-4xl);
   font-weight: var(--font-weight-bold);
   color: var(--color-light-text-primary);
-  line-height: var(--line-height-medium); /* Mantém a alteração para 1.4 */
-  overflow-wrap: break-word; /* Mantém a adição */
-  max-width: 900px; /* Limita a largura máxima do H2 para forçar a quebra em telas maiores, se necessário */
-  margin-left: auto; /* Centraliza o H2 com o max-width */
-  margin-right: auto; /* Centraliza o H2 com o max-width */
+  line-height: var(--line-height-medium);
+  overflow-wrap: break-word;
 }
 
 .testimonials-carousel {
@@ -1218,11 +1294,51 @@ body.no-scroll {
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  position: fixed;
 }
 
 .whatsapp-float:hover {
   transform: translateY(-2px);
   background: var(--color-btn-primary-hover);
+}
+
+/* Ripple animation around desktop WhatsApp button */
+.whatsapp-float::before,
+.whatsapp-float::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--color-company);
+  opacity: 0.18;
+  transform: scale(1);
+  animation: whatsapp-ripple 2.6s ease-out infinite;
+  pointer-events: none;
+}
+
+.whatsapp-float::after {
+  animation-delay: 1.3s;
+}
+
+@keyframes whatsapp-ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.18;
+  }
+  60% {
+    opacity: 0.10;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-float::before,
+  .whatsapp-float::after {
+    animation: none;
+  }
 }
 
 /* Sticky CTA (mobile) */
