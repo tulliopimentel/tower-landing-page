@@ -190,6 +190,7 @@
           :autoplay="testimonialsSwiperOptions.autoplay"
           :pagination="testimonialsSwiperOptions.pagination"
           :navigation="testimonialsSwiperOptions.navigation"
+          :breakpoints="testimonialsSwiperOptions.breakpoints"
           :grab-cursor="true"
           class="testimonials-carousel"
           aria-live="polite"
@@ -427,7 +428,7 @@ export default defineComponent({
     };
 
     const testimonialsSwiperOptions = {
-      slidesPerView: 1, // Padrão para telas pequenas
+      slidesPerView: 1,
       spaceBetween: 30,
       loop: true,
       allowTouchMove: true,
@@ -440,22 +441,18 @@ export default defineComponent({
       },
 
       breakpoints: {
-        // Para telas maiores que 992px (desktops), exibe 3 cards
         992: {
-          slidesPerView: 1,
+          slidesPerView: 3,
           spaceBetween: 30,
         },
-        // Para telas entre 768px e 991px (tablets maiores), exibe 1 card
         768: {
           slidesPerView: 1,
           spaceBetween: 30,
         },
-        // Para telas entre 576px e 767px (mobile paisagem), exibe 1 card
         576: {
           slidesPerView: 1,
           spaceBetween: 30,
         },
-        // Para telas menores que 576px (mobile retrato), exibe 1 card
         0: {
           slidesPerView: 1,
           spaceBetween: 30
