@@ -1,6 +1,6 @@
 <template>
   <div class="landing-page" id="home">
-    <header class="header">
+    <header class="header" :class="{ 'is-scrolled': isHeaderScrolled }">
       <div class="container">
         <a href="#home" class="logo" aria-label="Voltar para o início - Logotipo Tower Studio">
           <img src="@/assets/TOWER-PERFIL.png" alt="Tower Studio - Edição de Vídeos, Gravações e Motion Graphics" loading="lazy" width="150" height="50"/>
@@ -17,18 +17,35 @@
             <li><a href="#about" @click="closeMenu" aria-label="Ir para a seção Quem Somos">Quem Somos</a></li>
             <li><a href="#portfolio" @click="closeMenu" aria-label="Ir para a seção Portfólio">Portfólio</a></li>
             <li><a href="#testimonials" @click="closeMenu" aria-label="Ir para a seção Depoimentos">Depoimentos</a></li>
+            <li class="mobile-cta">
+              <a href="https://wa.me/5518997762278?text=Olá, quero impulsionar meus vídeos com a Tower!" target="_blank" rel="noopener" class="btn btn-primary" aria-label="Chamar WhatsApp">
+                FALAR NO WHATSAPP
+              </a>
+            </li>
           </ul>
         </nav>
+        <div class="header-cta">
+          <a href="https://wa.me/5518997762278?text=Olá, quero impulsionar meus vídeos com a Tower!" target="_blank" rel="noopener" class="btn btn-primary" aria-label="Chamar WhatsApp">
+            FALAR NO WHATSAPP
+          </a>
+        </div>
       </div>
     </header>
+    <div class="mobile-menu-overlay" :class="{ 'is-open': isMenuOpen }" @click="toggleMenu" aria-hidden="true"></div>
 
     <main class="hero-section">
-      <div class="hero-container">
+      <div class="hero-container reveal">
         <div class="hero-text">
           <h1 class="hero-title">Dê vida aos seus vídeos</h1>
           <p class="hero-subtitle">
             <span class="highlight">Se preocupe somente em gravar,</span> e deixe a Edição Profissional com a gente!
           </p>
+          <ul class="hero-bullets">
+            <li>Estratégia e roteiro focados em conversão</li>
+            <li>Motion Graphics e edições cativantes</li>
+            <li>Prazo ágil e acompanhamento dedicado</li>
+            <li>Pacotes para YouTube, Reels e Ads</li>
+          </ul>
           <div class="hero-actions">
             <a href="https://wa.me/5518997762278?text=Olá, gostaria de solicitar um orçamento para edição de video" target="_blank" class="btn btn-primary" rel="noopener noreferrer" title="Solicitar Orçamento de Edição de Vídeo via WhatsApp">
               SOLICITAR ORÇAMENTO
@@ -41,7 +58,7 @@
         </div>
       </div>
 
-      <section class="impact-cards" aria-labelledby="impact-stats-title">
+      <section class="impact-cards reveal" aria-labelledby="impact-stats-title">
         <h2 id="impact-stats-title" class="sr-only">Nossos Resultados e Impacto</h2>
         <div class="impact-card">
           <span class="impact-number">+100 Milhões</span>
@@ -61,7 +78,7 @@
         </div>
       </section>
 
-      <section class="company-logos" aria-labelledby="partners-title">
+      <section class="company-logos reveal" aria-labelledby="partners-title">
         <h2 id="partners-title" class="section-title">Parceiros que brilham: Conheça quem já confia em nosso trabalho. E muito mais!</h2>
         <swiper-container
           :slides-per-view="swiperOptions.slidesPerView"
@@ -86,7 +103,7 @@
         </swiper-container>
       </section>
 
-      <section class="services-section" id="services" aria-labelledby="services-title">
+      <section class="services-section reveal" id="services" aria-labelledby="services-title">
         <p class="section-tag">/ NOSSOS SERVIÇOS /</p>
         <h2 id="services-title" class="section-title">
           Soluções <span class="highlight">completas</span> para o seu conteúdo digital: edição, gravação, motion graphics e planejamento.
@@ -124,7 +141,7 @@
         </div>
       </section>
 
-      <section class="about-us-section" id="about" aria-labelledby="about-title">
+      <section class="about-us-section reveal" id="about" aria-labelledby="about-title">
         <div class="about-content">
           <div class="about-image">
             <img src="@/assets/TOWER-PERFIL.png" alt="Guilherme e Gabriel, fundadores da Tower Studio, equipe especializada em produção de conteúdo digital" loading="lazy" width="600" height="400" />
@@ -147,7 +164,7 @@
         </div>
       </section>
 
-      <section class="portfolio-section" id="portfolio" aria-labelledby="portfolio-title">
+      <section class="portfolio-section reveal" id="portfolio" aria-labelledby="portfolio-title">
         <div class="portfolio-header">
           <p class="section-tag">/ NOSSO PORTFÓLIO /</p>
           <div class="parallax-title-wrapper" ref="parallaxTitleWrapper">
@@ -178,7 +195,7 @@
         </div>
       </section>
 
-      <section class="testimonials-section" id="testimonials" aria-labelledby="testimonials-title">
+      <section class="testimonials-section reveal" id="testimonials" aria-labelledby="testimonials-title">
         <p class="section-tag">/ O QUE DIZEM NOSSOS CLIENTES /</p>
         <h2 id="testimonials-title" class="section-title">
           Vozes que <span class="highlight">inspiram</span>: Depoimentos de quem já colhe resultados com a Tower Studio.
@@ -214,7 +231,16 @@
       </section>
       </main>
 
-    <footer class="footer" aria-labelledby="footer-heading">
+    <a class="whatsapp-float" href="https://wa.me/5518997762278?text=Quero aumentar meus resultados com vídeos!" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19.11 17.38c-.28-.14-1.64-.81-1.89-.9-.25-.09-.43-.14-.61.14-.18.28-.7.9-.86 1.09-.16.19-.32.21-.6.07-.28-.14-1.17-.43-2.23-1.38-.82-.73-1.37-1.64-1.53-1.92-.16-.28-.02-.43.12-.57.12-.12.28-.32.42-.48.14-.16.18-.28.28-.47.09-.19.05-.35-.02-.5-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.46-.16 0-.35-.02-.54-.02-.19 0-.5.07-.76.35-.26.28-1 1-1 2.43 0 1.43 1.03 2.81 1.18 3 .14.19 2.03 3.11 4.92 4.37.69.3 1.23.48 1.65.62.69.22 1.33.19 1.82.12.55-.08 1.64-.67 1.87-1.32.23-.65.23-1.21.16-1.32-.07-.11-.25-.18-.53-.32zM16 3C8.83 3 3 8.83 3 16c0 2.3.62 4.47 1.69 6.33L3 29l6.82-1.79C11.6 28.24 13.73 29 16 29c7.18 0 13-5.82 13-13S23.18 3 16 3zM16 26.92c-2.16 0-4.16-.7-5.78-1.89l-.41-.29-4.04 1.06 1.08-3.94-.3-.41C5.38 20.81 4.69 18.88 4.69 16 4.69 9.94 9.94 4.69 16 4.69S27.31 9.94 27.31 16 22.06 27.31 16 26.92z"></path></svg>
+    </a>
+
+    <div class="sticky-cta-bar" :class="{ 'is-visible': stickyCtaVisible }" role="region" aria-label="Barra de chamada para ação">
+      <span class="text">Pronto para elevar seus vídeos?</span>
+      <a href="https://wa.me/5518997762278?text=Quero um orçamento agora!" class="btn btn-primary" target="_blank" rel="noopener">FALAR NO WHATSAPP</a>
+    </div>
+
+    <footer class="footer reveal" aria-labelledby="footer-heading">
       <h2 id="footer-heading" class="sr-only">Informações de Contato e Navegação do Rodapé</h2>
       <div class="container">
         <div class="footer-brand">
@@ -248,7 +274,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, watch, onMounted, onUnmounted } from 'vue';
+import { defineComponent, ref, onMounted, onUnmounted } from 'vue';
 import { register } from 'swiper/element/bundle';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -263,6 +289,8 @@ export default defineComponent({
   name: 'HomeView',
   setup() {
     const isMenuOpen = ref(false);
+    const isHeaderScrolled = ref(false);
+    const stickyCtaVisible = ref(false);
     const portfolioTitle = ref(null);
     const parallaxTitleWrapper = ref(null);
 
@@ -315,8 +343,12 @@ export default defineComponent({
     };
 
     const handleScroll = () => {
+      // Header blur/estilo ao rolar
+      const scrollY = window.scrollY;
+      isHeaderScrolled.value = scrollY > 10;
+      stickyCtaVisible.value = scrollY > 600;
+
       if (portfolioTitle.value && parallaxTitleWrapper.value) {
-        const scrollY = window.scrollY;
         const sectionRect = parallaxTitleWrapper.value.getBoundingClientRect();
         const sectionTop = sectionRect.top + scrollY;
         const sectionHeight = sectionRect.height;
@@ -324,10 +356,10 @@ export default defineComponent({
         const viewportHeight = window.innerHeight;
         const startScroll = sectionTop - viewportHeight;
         const endScroll = sectionTop + sectionHeight;
+        const parallaxSpeed = 0.3;
 
         if (scrollY > startScroll && scrollY < endScroll) {
           const scrollProgress = (scrollY - startScroll) / (endScroll - startScroll);
-          const parallaxSpeed = 0.3;
           const translateY = scrollProgress * 50 * parallaxSpeed;
           portfolioTitle.value.style.transform = `translateY(${translateY}px)`;
         } else if (scrollY <= startScroll) {
@@ -339,12 +371,39 @@ export default defineComponent({
       }
     };
 
+    // IntersectionObserver para revelar elementos
+    let revealObserver = null;
+    // Removido contador animado para manter os dados originais exibidos
+
     onMounted(() => {
       window.addEventListener('scroll', handleScroll);
+
+      const revealOptions = {
+        root: null,
+        rootMargin: '0px 0px -10% 0px',
+        threshold: 0.1,
+      };
+
+      revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, revealOptions);
+
+      document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+
+      // Nenhuma alteração nos números de impacto
     });
 
     onUnmounted(() => {
       window.removeEventListener('scroll', handleScroll);
+      if (revealObserver) {
+        revealObserver.disconnect();
+      }
+      // nada a desconectar além do revealObserver
     });
 
     const people = [
@@ -462,6 +521,8 @@ export default defineComponent({
 
     return {
       isMenuOpen,
+      isHeaderScrolled,
+      stickyCtaVisible,
       toggleMenu,
       closeMenu,
       people,
