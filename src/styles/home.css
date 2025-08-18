@@ -148,7 +148,6 @@ body.no-scroll {
   margin-left: auto;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
 }
 
 .header-cta i {
@@ -214,7 +213,7 @@ body.no-scroll {
   background-size: 100% 2px;
 }
 
-.main-nav .mobile-cta { display: none; }
+.main-nav .mobile-cta { display: none; width: 100%; padding: 0 var(--spacing-large); }
 
 .hamburger-menu {
   display: none;
@@ -244,8 +243,7 @@ body.no-scroll {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  background: rgba(0,0,0,0.5);
-  transition: opacity 0.25s var(--easing-smooth), visibility 0.25s var(--easing-smooth);
+
 }
 
 .mobile-menu-overlay.is-open {
@@ -1621,7 +1619,10 @@ body.no-scroll .sticky-cta-bar { display: none; }
   .hero-bullets { grid-template-columns: 1fr; }
 
   .header-cta { display: none; }
-  .main-nav .mobile-cta { display: block; width: 100%; padding: 0 var(--spacing-large); }
+  .main-nav .mobile-cta { display: block; width: 100%; }
+  /* Alinhamento do botão no menu mobile */
+  .main-nav .mobile-cta { display: flex; justify-content: center; }
+  .main-nav .mobile-cta .btn { width: 100%; max-width: none; text-align: center; justify-content: center;}
 
   .company-logo {
     height: var(--spacing-6xl);
@@ -1905,6 +1906,10 @@ body.no-scroll .sticky-cta-bar { display: none; }
   .portfolio-videos-title {
     font-size: var(--font-size-4xl);
   }
+
+  /* Centralizar botão da barra fixa no mobile (<=480px) */
+  .sticky-cta-bar { padding-left: var(--spacing-small); padding-right: var(--spacing-small); }
+  .sticky-cta-bar .btn { display: block; width: 60%; max-width: none; text-align: center; }
 
   .sticky-cta-bar .text { display: none; }
   .whatsapp-float { bottom: 80px; right: 18px; }
