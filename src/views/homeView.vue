@@ -36,10 +36,10 @@
             <span class="highlight">Se preocupe somente em gravar,</span> e deixe a Edição Profissional com a gente!
           </p>
           <ul class="trust-badges" aria-label="Benefícios e diferenciais">
-            <li>Entrega ágil</li>
-            <li>Qualidade aprovada por criadores</li>
-            <li>Roteiro e estratégia incluídos</li>
-            <li>Orçamento sem compromisso</li>
+            <li>Estratégia e roteiro focados em conversão</li>
+            <li>Motion Graphics e edições cativantes</li>
+            <li>Prazo ágil e acompanhamento dedicado</li>
+            <li>Pacotes para YouTube, Reels e Ads</li>
           </ul>
           <div class="hero-actions">
             <a href="https://wa.me/5518997762278?text=Olá, gostaria de solicitar um orçamento para edição de video" target="_blank" class="btn btn-primary" rel="noopener noreferrer" title="Solicitar Orçamento de Edição de Vídeo via WhatsApp">
