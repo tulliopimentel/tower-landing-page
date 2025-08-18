@@ -25,7 +25,8 @@
           </ul>
         </nav>
         <div class="header-cta">
-          <a href="https://wa.me/5518997762278?text=Olá, quero impulsionar meus vídeos com a Tower!" target="_blank" rel="noopener" class="btn btn-primary" aria-label="Chamar WhatsApp">
+          <a href="https://wa.me/5518997762278?text=Olá!%20Quero%20impulsionar%20meus%20vídeos.%20Pode%20me%20ajudar%3F" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-whatsapp" title="Falar no WhatsApp">
+
             FALAR NO WHATSAPP
           </a>
         </div>
@@ -36,11 +37,13 @@
     <main class="hero-section">
       <div class="hero-container reveal">
         <div class="hero-text">
+          <p class="hero-eyebrow">Edição de alto impacto para quem vive de conteúdo</p>
           <h1 class="hero-title">Dê vida aos seus vídeos</h1>
           <p class="hero-subtitle">
             <span class="highlight">Se preocupe somente em gravar,</span> e deixe a Edição Profissional com a gente!
           </p>
-          <ul class="hero-bullets">
+          <ul class="trust-badges" aria-label="Benefícios e diferenciais">
+
             <li>Estratégia e roteiro focados em conversão</li>
             <li>Motion Graphics e edições cativantes</li>
             <li>Prazo ágil e acompanhamento dedicado</li>
@@ -167,11 +170,9 @@
       <section class="portfolio-section reveal" id="portfolio" aria-labelledby="portfolio-title">
         <div class="portfolio-header">
           <p class="section-tag">/ NOSSO PORTFÓLIO /</p>
-          <div class="parallax-title-wrapper" ref="parallaxTitleWrapper">
-            <h2 id="portfolio-title" class="section-title portfolio-title" ref="portfolioTitle">
-              Confira alguns dos projetos de sucesso produzidos pela <span class="highlight">Tower Studio</span>
-            </h2>
-          </div>
+          <h2 id="portfolio-title" class="section-title portfolio-title">
+            Confira alguns dos projetos de sucesso produzidos pela <span class="highlight">Tower Studio</span>
+          </h2>
         </div>
 
         <div class="portfolio-content">
@@ -270,11 +271,28 @@
         <p>© {{ new Date().getFullYear() }} Tower Studio. Todos os direitos reservados.</p>
       </div>
     </footer>
+    <a
+      href="https://wa.me/5518997762278?text=Olá!%20Quero%20falar%20com%20a%20Tower%20Studio"
+      class="whatsapp-float"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Abrir conversa no WhatsApp"
+      title="Falar no WhatsApp"
+    >
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <path d="M27.5 4.5C24.6 1.6 20.6 0 16.3 0 7.3 0 .1 7.2.1 16.1c0 2.8.7 5.4 2 7.8L0 32l8.3-2.2c2.3 1.2 4.9 1.8 7.6 1.8 9 0 16.2-7.2 16.2-16.1 0-4.3-1.7-8.3-4.6-11.2zM16 29.1c-2.4 0-4.7-.6-6.7-1.7l-.5-.3-4.9 1.3 1.3-4.8-.3-.5c-1.2-2.1-1.8-4.5-1.8-6.9C3.1 8.8 9.1 2.9 16.3 2.9c3.5 0 6.7 1.4 9.2 3.8 2.5 2.5 3.9 5.7 3.9 9.2 0 7.2-6 13.2-13.4 13.2zm7.8-9.9c-.4-.2-2.3-1.1-2.6-1.2-.3-.1-.5-.2-.7.2s-.8 1.2-1 1.5c-.2.3-.4.3-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.2-2.6-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.6.1-.2 0-.5 0-.7 0-.2-.7-1.8-1-2.5-.3-.7-.5-.6-.7-.6h-.6c-.2 0-.7.1-1.1.5-.4.4-1.5 1.5-1.5 3.6s1.6 4.2 1.8 4.5c.2.3 3.2 4.9 7.8 6.7.9.4 1.6.6 2.2.9.9.3 1.7.3 2.3.2.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.7.2-1.8-.1-.1-.3-.2-.7-.4z" fill="#fff"/>
+      </svg>
+    </a>
+    <div class="sticky-cta-mobile" role="region" aria-label="CTA fixo no mobile">
+      <a href="https://wa.me/5518997762278?text=Olá!%20Quero%20um%20orçamento%20rápido" target="_blank" rel="noopener noreferrer" class="btn btn-primary" title="Solicitar orçamento rápido pelo WhatsApp">
+        FALAR NO WHATSAPP
+      </a>
+    </div>
   </div>
 </template>
 
 <script>
-import { defineComponent, ref, onMounted, onUnmounted } from 'vue';
+import { defineComponent, ref, onMounted, onUnmounted, nextTick } from 'vue';
 import { register } from 'swiper/element/bundle';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -289,10 +307,7 @@ export default defineComponent({
   name: 'HomeView',
   setup() {
     const isMenuOpen = ref(false);
-    const isHeaderScrolled = ref(false);
-    const stickyCtaVisible = ref(false);
-    const portfolioTitle = ref(null);
-    const parallaxTitleWrapper = ref(null);
+    const headerEl = ref(null);
 
     const toggleMenu = () => {
       isMenuOpen.value = !isMenuOpen.value;
@@ -341,70 +356,6 @@ export default defineComponent({
         }, 300);
       }
     };
-
-    const handleScroll = () => {
-      // Header blur/estilo ao rolar
-      const scrollY = window.scrollY;
-      isHeaderScrolled.value = scrollY > 10;
-      stickyCtaVisible.value = scrollY > 600;
-
-      if (portfolioTitle.value && parallaxTitleWrapper.value) {
-        const sectionRect = parallaxTitleWrapper.value.getBoundingClientRect();
-        const sectionTop = sectionRect.top + scrollY;
-        const sectionHeight = sectionRect.height;
-
-        const viewportHeight = window.innerHeight;
-        const startScroll = sectionTop - viewportHeight;
-        const endScroll = sectionTop + sectionHeight;
-        const parallaxSpeed = 0.3;
-
-        if (scrollY > startScroll && scrollY < endScroll) {
-          const scrollProgress = (scrollY - startScroll) / (endScroll - startScroll);
-          const translateY = scrollProgress * 50 * parallaxSpeed;
-          portfolioTitle.value.style.transform = `translateY(${translateY}px)`;
-        } else if (scrollY <= startScroll) {
-          portfolioTitle.value.style.transform = `translateY(0px)`;
-        } else if (scrollY >= endScroll) {
-          const parallaxOffsetAtEnd = (endScroll - startScroll) / (endScroll - startScroll) * 50 * parallaxSpeed;
-          portfolioTitle.value.style.transform = `translateY(${parallaxOffsetAtEnd}px)`;
-        }
-      }
-    };
-
-    // IntersectionObserver para revelar elementos
-    let revealObserver = null;
-    // Removido contador animado para manter os dados originais exibidos
-
-    onMounted(() => {
-      window.addEventListener('scroll', handleScroll);
-
-      const revealOptions = {
-        root: null,
-        rootMargin: '0px 0px -10% 0px',
-        threshold: 0.1,
-      };
-
-      revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            revealObserver.unobserve(entry.target);
-          }
-        });
-      }, revealOptions);
-
-      document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
-
-      // Nenhuma alteração nos números de impacto
-    });
-
-    onUnmounted(() => {
-      window.removeEventListener('scroll', handleScroll);
-      if (revealObserver) {
-        revealObserver.disconnect();
-      }
-      // nada a desconectar além do revealObserver
-    });
 
     const people = [
       { image: new URL('@/assets/super_xandao.png', import.meta.url).href, alt: 'Super Xandão - Parceiro da Tower Studio', name: 'Super Xandão' },
@@ -519,6 +470,45 @@ export default defineComponent({
       },
     };
 
+    const equalizeTestimonialHeights = () => {
+      const cards = document.querySelectorAll('.testimonials-carousel .testimonial-card');
+      let maxHeight = 0;
+      cards.forEach(card => {
+        card.style.height = 'auto';
+      });
+      cards.forEach(card => {
+        const h = card.getBoundingClientRect().height;
+        if (h > maxHeight) maxHeight = h;
+      });
+      cards.forEach(card => {
+        card.style.height = `${maxHeight}px`;
+      });
+    };
+
+    onMounted(async () => {
+      await nextTick();
+      equalizeTestimonialHeights();
+      window.addEventListener('resize', equalizeTestimonialHeights);
+      // Header scroll state
+      const header = document.querySelector('.header');
+      const onScroll = () => {
+        if (!header) return;
+        if (window.scrollY > 10) header.classList.add('is-scrolled');
+        else header.classList.remove('is-scrolled');
+      };
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+      // store for cleanup
+      headerEl.value = { onScroll };
+    });
+
+    onUnmounted(() => {
+      window.removeEventListener('resize', equalizeTestimonialHeights);
+      if (headerEl.value && headerEl.value.onScroll) {
+        window.removeEventListener('scroll', headerEl.value.onScroll);
+      }
+    });
+
     return {
       isMenuOpen,
       isHeaderScrolled,
@@ -529,8 +519,7 @@ export default defineComponent({
       swiperOptions,
       testimonials,
       testimonialsSwiperOptions,
-      portfolioTitle,
-      parallaxTitleWrapper
+      equalizeTestimonialHeights,
     };
   },
 });
