@@ -99,7 +99,10 @@
         >
           <swiper-slide v-for="(person, index) in people" :key="index">
             <div class="logo-item">
-              <img :src="person.image" :alt="person.alt" class="company-logo" loading="lazy" width="100" height="100" />
+              <a v-if="person.link" :href="person.link" target="_blank" rel="noopener noreferrer" class="logo-link">
+                <img :src="person.image" :alt="person.alt" class="company-logo" loading="lazy" width="100" height="100" />
+              </a>
+              <img v-else :src="person.image" :alt="person.alt" class="company-logo" loading="lazy" width="100" height="100" />
               <span class="logo-name">{{ person.name }}</span>
             </div>
           </swiper-slide>
@@ -372,15 +375,21 @@ export default defineComponent({
     };
 
     const people = [
-      { image: new URL('@/assets/super_xandao.png', import.meta.url).href, alt: 'Super Xandão - Parceiro da Tower Studio', name: 'Super Xandão' },
-      { image: new URL('@/assets/victor_sarro.png', import.meta.url).href, alt: 'Victor Sarro - Cliente da Tower Studio', name: 'Victor Sarro' },
-      { image: new URL('@/assets/anna_egreja.jpg', import.meta.url).href, alt: 'Anna Egreja - Colaboradora da Tower Studio', name: 'Anna Egreja' },
-      { image: new URL('@/assets/gorgonoide.jpg', import.meta.url).href, alt: 'Gorgonoid - Parceiro de conteúdo digital', name: 'Gorgonoid' },
-      { image: new URL('@/assets/tinows.jpg', import.meta.url).href, alt: 'Tinowns - Profissional de eSports', name: 'Tinowns' },
-      { image: new URL('@/assets/ericat.jpg', import.meta.url).href, alt: 'Ericat - Streamer e Influencer', name: 'Ericat' },
-      { image: new URL('@/assets/gabriel_curiosidades.png', import.meta.url).href, alt: 'Gabriel Chinchilla - Criador de Conteúdo', name: 'Gabriel Chinchilla' },
-      { image: new URL('@/assets/snickers.png', import.meta.url).href, alt: 'Snickers - Marca parceira', name: 'Snickers' },
-      { image: new URL('@/assets/vivo_cliente.jpg', import.meta.url).href, alt: 'Vivo - Empresa de Telecomunicações', name: 'Vivo' },
+      { image: new URL('@/assets/super_xandao.png', import.meta.url).href, alt: 'Super Xandão - Parceiro da Tower Studio', name: 'Super Xandão', link: 'https://www.instagram.com/superxandao/' },
+      { image: new URL('@/assets/victor_sarro.png', import.meta.url).href, alt: 'Victor Sarro - Cliente da Tower Studio', name: 'Victor Sarro', link: 'https://www.instagram.com/victorsarro/' },
+      { image: new URL('@/assets/anna_egreja.jpg', import.meta.url).href, alt: 'Anna Egreja - Colaboradora da Tower Studio', name: 'Anna Egreja', link: 'https://www.instagram.com/annaegreja/' },
+      { image: new URL('@/assets/gorgonoide.jpg', import.meta.url).href, alt: 'Gorgonoid - Parceiro de conteúdo digital', name: 'Gorgonoid', link: 'https://www.instagram.com/gorgonoid/' },
+      { image: new URL('@/assets/tinows.jpg', import.meta.url).href, alt: 'Tinowns - Profissional de eSports', name: 'Tinowns', link: 'https://www.instagram.com/thiagotinowns/' },
+      { image: new URL('@/assets/ericat.jpg', import.meta.url).href, alt: 'Ericat - Streamer e Influencer', name: 'Ericat', link: 'https://www.instagram.com/ericat_lol/' },
+      { image: new URL('@/assets/gabriel_curiosidades.png', import.meta.url).href, alt: 'Gabriel Chinchilla - Criador de Conteúdo', name: 'Gabriel Chinchilla', link: 'https://www.instagram.com/ga_chinchilla/' },
+      { image: new URL('@/assets/snickers.png', import.meta.url).href, alt: 'Snickers - Marca parceira', name: 'Snickers', link: 'https://www.instagram.com/snickersbr/' },
+      { image: new URL('@/assets/vivo_cliente.jpg', import.meta.url).href, alt: 'Vivo - Empresa de Telecomunicações', name: 'Vivo', link: 'https://www.instagram.com/vivo/' },
+      // Novos parceiros com placeholder de imagem
+      { image: new URL('@/assets/brazuca_logo.png', import.meta.url).href, alt: 'Brazuca Filmes - Parceiro da Tower Studio', name: 'Brazuca Filmes', link: 'https://www.instagram.com/brazucafilmes/' },
+      { image: new URL('@/assets/analu.png', import.meta.url).href, alt: 'Analu - Parceira da Tower Studio', name: 'Analu', link: 'https://www.instagram.com/analuproductdaily/' },
+      { image: new URL('@/assets/haru.webp', import.meta.url).href, alt: 'Haru - Parceiro da Tower Studio', name: 'Haru', link: 'https://www.instagram.com/haru_jiggly/' },
+      { image: new URL('@/assets/maissports.jpg', import.meta.url).href, alt: 'Mais esports - Parceiro da Tower Studio', name: 'Mais esports', link: 'https://www.instagram.com/maisesportsbr/' },
+      { image: new URL('@/assets/yamanerd.jpg', import.meta.url).href, alt: 'Tarcisio Yamamoto - Parceiro da Tower Studio', name: 'Tarcisio Yamamoto', link: 'https://www.instagram.com/tar.yamamoto/' },
     ];
 
     const testimonials = [

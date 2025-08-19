@@ -681,6 +681,10 @@ body.no-scroll {
   height: auto;
 }
 
+.logo-name[href] {
+  text-decoration: none;
+}
+
 .swiper-slide {
   box-sizing: border-box;
   max-width: 100%;
@@ -1143,6 +1147,8 @@ body.no-scroll {
   color: var(--color-company);
   margin: 0;
 }
+
+/* removido estilo de link dentro do nome do depoimento, pois depoimento voltou a ser estático */
 
 .testimonial-role {
   font-size: var(--font-size-small);
