@@ -226,7 +226,14 @@
                   <p class="testimonial-role">{{ testimonial.role }}</p>
                 </div>
               </div>
-              <p class="testimonial-text">{{ testimonial.text }}</p>
+              <p class="testimonial-text" :ref="el => testimonialTextRefs[index] = el">{{ testimonial.text }}</p>
+              <button
+                v-if="overflowingTestimonials[index]"
+                type="button"
+                class="read-more-button"
+                @click="openTestimonialModal(testimonial)"
+                aria-label="Ler depoimento completo"
+              >Ler mais</button>
               <div class="testimonial-rating">
                 <span v-for="star in testimonial.rating" :key="star" class="star">★</span>
               </div>
@@ -234,6 +241,21 @@
           </swiper-slide>
         </swiper-container>
       </section>
+      
+      <!-- Modal de Depoimento Completo -->
+      <div v-if="isTestimonialModalOpen" class="testimonial-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="testimonial-modal-title">
+        <div class="testimonial-modal-card">
+          <button class="testimonial-modal-close" type="button" aria-label="Fechar" @click="closeTestimonialModal">×</button>
+          <div class="testimonial-modal-header">
+            <img v-if="activeTestimonial?.avatar" :src="activeTestimonial.avatar" :alt="activeTestimonial?.name" class="testimonial-avatar" width="70" height="70" />
+            <div class="testimonial-info">
+              <h3 id="testimonial-modal-title" class="testimonial-name">{{ activeTestimonial?.name }}</h3>
+              <p class="testimonial-role">{{ activeTestimonial?.role }}</p>
+            </div>
+          </div>
+          <p class="testimonial-text full">{{ activeTestimonial?.text }}</p>
+        </div>
+      </div>
       </main>
 
     
@@ -494,10 +516,39 @@ export default defineComponent({
       });
     };
 
+    // Controle de overflow e modal "Ler mais"
+    const testimonialTextRefs = ref([]);
+    const overflowingTestimonials = ref([]);
+    const isTestimonialModalOpen = ref(false);
+    const activeTestimonial = ref(null);
+
+    const checkTestimonialsOverflow = () => {
+      nextTick(() => {
+        overflowingTestimonials.value = testimonialTextRefs.value.map((el) => {
+          if (!el) return false;
+          return el.scrollHeight > el.clientHeight + 2; // margem de segurança
+        });
+      });
+    };
+
+    const openTestimonialModal = (testimonial) => {
+      activeTestimonial.value = testimonial;
+      isTestimonialModalOpen.value = true;
+      document.body.classList.add('no-scroll');
+    };
+
+    const closeTestimonialModal = () => {
+      isTestimonialModalOpen.value = false;
+      activeTestimonial.value = null;
+      document.body.classList.remove('no-scroll');
+    };
+
     onMounted(async () => {
       await nextTick();
       equalizeTestimonialHeights();
+      checkTestimonialsOverflow();
       window.addEventListener('resize', equalizeTestimonialHeights);
+      window.addEventListener('resize', checkTestimonialsOverflow);
       window.addEventListener('resize', updateStickyCta);
       // Header scroll state
       const header = document.querySelector('.header');
@@ -515,6 +566,7 @@ export default defineComponent({
 
     onUnmounted(() => {
       window.removeEventListener('resize', equalizeTestimonialHeights);
+      window.removeEventListener('resize', checkTestimonialsOverflow);
       window.removeEventListener('resize', updateStickyCta);
       if (headerEl.value && headerEl.value.onScroll) {
         window.removeEventListener('scroll', headerEl.value.onScroll);
@@ -531,6 +583,12 @@ export default defineComponent({
       testimonials,
       testimonialsSwiperOptions,
       equalizeTestimonialHeights,
+      testimonialTextRefs,
+      overflowingTestimonials,
+      isTestimonialModalOpen,
+      activeTestimonial,
+      openTestimonialModal,
+      closeTestimonialModal,
     };
   },
 });
