@@ -212,27 +212,13 @@
           :pagination="testimonialsSwiperOptions.pagination"
           :navigation="testimonialsSwiperOptions.navigation"
           :breakpoints="testimonialsSwiperOptions.breakpoints"
+          :centered-slides="testimonialsSwiperOptions.centeredSlides"
           :grab-cursor="true"
           class="testimonials-carousel"
           aria-live="polite"
         >
           <swiper-slide v-for="(testimonial, index) in testimonials" :key="index">
-            <a v-if="testimonial.link" :href="testimonial.link" target="_blank" rel="noopener noreferrer" class="testimonial-link" :aria-label="'Abrir Instagram de ' + testimonial.name">
-              <article class="testimonial-card">
-                <div class="testimonial-header">
-                  <img :src="testimonial.avatar" :alt="testimonial.name" class="testimonial-avatar" loading="lazy" width="80" height="80" />
-                  <div class="testimonial-info">
-                    <h3 class="testimonial-name">{{ testimonial.name }}</h3>
-                    <p class="testimonial-role">{{ testimonial.role }}</p>
-                  </div>
-                </div>
-                <p class="testimonial-text">{{ testimonial.text }}</p>
-                <div class="testimonial-rating">
-                  <span v-for="star in testimonial.rating" :key="star" class="star">★</span>
-                </div>
-              </article>
-            </a>
-            <article v-else class="testimonial-card">
+            <article class="testimonial-card">
               <div class="testimonial-header">
                 <img :src="testimonial.avatar" :alt="testimonial.name" class="testimonial-avatar" loading="lazy" width="80" height="80" />
                 <div class="testimonial-info">
@@ -316,7 +302,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, onMounted, onUnmounted, nextTick } from 'vue';
+import { defineComponent, ref, onMounted, onUnmounted, nextTick, computed } from 'vue';
 import { register } from 'swiper/element/bundle';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -455,38 +441,43 @@ export default defineComponent({
       },
     };
 
-    const testimonialsSwiperOptions = {
-      slidesPerView: 1,
-      spaceBetween: 30,
-      loop: true,
-      allowTouchMove: true,
-      speed: 4000,
+    const testimonialsSwiperOptions = computed(() => {
+      const count = testimonials.length;
+      const isFew = count <= 2;
+      return {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: !isFew, // evita loop quando há poucos itens para não repetir artificialmente
+        allowTouchMove: true,
+        speed: 4000,
+        centeredSlides: isFew,
 
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-        reverseDirection: false,
-      },
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+          reverseDirection: false,
+        },
 
-      breakpoints: {
-        992: {
-          slidesPerView: 3,
-          spaceBetween: 30,
+        breakpoints: {
+          992: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+          768: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+          },
+          576: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+          },
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 30
+          },
         },
-        768: {
-          slidesPerView: 1,
-          spaceBetween: 30,
-        },
-        576: {
-          slidesPerView: 1,
-          spaceBetween: 30,
-        },
-        0: {
-          slidesPerView: 1,
-          spaceBetween: 30
-        },
-      },
-    };
+      };
+    });
 
     const equalizeTestimonialHeights = () => {
       const cards = document.querySelectorAll('.testimonials-carousel .testimonial-card');
