@@ -217,7 +217,22 @@
           aria-live="polite"
         >
           <swiper-slide v-for="(testimonial, index) in testimonials" :key="index">
-            <article class="testimonial-card">
+            <a v-if="testimonial.link" :href="testimonial.link" target="_blank" rel="noopener noreferrer" class="testimonial-link" :aria-label="'Abrir Instagram de ' + testimonial.name">
+              <article class="testimonial-card">
+                <div class="testimonial-header">
+                  <img :src="testimonial.avatar" :alt="testimonial.name" class="testimonial-avatar" loading="lazy" width="80" height="80" />
+                  <div class="testimonial-info">
+                    <h3 class="testimonial-name">{{ testimonial.name }}</h3>
+                    <p class="testimonial-role">{{ testimonial.role }}</p>
+                  </div>
+                </div>
+                <p class="testimonial-text">{{ testimonial.text }}</p>
+                <div class="testimonial-rating">
+                  <span v-for="star in testimonial.rating" :key="star" class="star">★</span>
+                </div>
+              </article>
+            </a>
+            <article v-else class="testimonial-card">
               <div class="testimonial-header">
                 <img :src="testimonial.avatar" :alt="testimonial.name" class="testimonial-avatar" loading="lazy" width="80" height="80" />
                 <div class="testimonial-info">
@@ -394,32 +409,12 @@ export default defineComponent({
 
     const testimonials = [
       {
-        name: "Cláudio Junior",
-        role: "YouTuber e Influencer",
-        avatar: new URL('@/assets/avatar-claudio.jpg', import.meta.url).href, // Substitua pelo caminho da imagem
-        text: "A Tower Studio transformou meus vídeos! A edição é impecável, com cortes que dão um ritmo incrível e efeitos que elevam a qualidade. Meus inscritos notaram a diferença, e o engajamento disparou. Recomendo demais para quem quer profissionalizar seu conteúdo!",
-        rating: 5
-      },
-      {
-        name: "Beatriz Costa",
-        role: "CEO, Startup Tech",
-        avatar: new URL('@/assets/avatar-beatriz.jpg', import.meta.url).href, // Substitua pelo caminho da imagem
-        text: "Precisávamos de motion graphics que realmente transmitissem a inovação da nossa startup. A equipe da Tower Studio superou todas as expectativas! Criaram animações dinâmicas e claras que explicam nosso produto de forma genial. Profissionais e criativos!",
-        rating: 5
-      },
-      {
-        name: "Lucas Mendes",
-        role: "Criador de Conteúdo Fitness",
-        avatar: new URL('@/assets/avatar-lucas.jpg', import.meta.url).href, // Substitua pelo caminho da imagem
-        text: "Com a Tower Studio, pude focar na gravação enquanto eles cuidavam de toda a pós-produção. O resultado? Vídeos com qualidade cinematográfica, que me posicionaram como autoridade no meu nicho. Se você busca excelência em edição, não procure mais!",
-        rating: 4
-      },
-      {
-        name: "Isabela Oliveira",
-        role: "Marketing Manager, E-commerce",
-        avatar: new URL('@/assets/avatar-isabela.jpg', import.meta.url).href, // Substitua pelo caminho da imagem
-        text: "O planejamento estratégico de vídeo da Tower Studio foi um divisor de águas para nossa campanha. Eles entenderam perfeitamente nossos objetivos e entregaram um roteiro que converteu muito. Além da edição de altíssimo nível, o suporte e a comunicação são excelentes.",
-        rating: 5
+        name: "Brazuca Filmes",
+        role: "Produtora Audiovisual",
+        avatar: new URL('@/assets/brazuca_logo.png', import.meta.url).href,
+        text: "A Tower é uma parceira essencial para a Brazuca Filmes. Eles são rápidos, proativos e dinâmicos, sempre entregando um excelente custo-benefício. O que mais admiro é a disposição de ouvir, aprender e entender até as demandas mais complexas, garantindo a melhor execução possível. Ao longo de nossa parceria, nunca nos deixaram na mão — pelo contrário, sempre surpreenderam pela qualidade e agilidade. A Tower tem nossa total confiança, pois conseguem editar qualquer filme com excelência.",
+        rating: 5,
+        link: 'https://www.instagram.com/brazucafilmes/'
       }
     ];
 
