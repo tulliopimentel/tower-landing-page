@@ -1424,6 +1424,7 @@ body.no-scroll .sticky-cta-bar { display: none; }
   font-size: var(--font-size-xs);
   line-height: var(--line-height-normal);
   text-align: center;
+  position: relative;
 }
 
 .footer-bottom p {
@@ -1440,6 +1441,32 @@ body.no-scroll .sticky-cta-bar { display: none; }
 .footer-bottom a:hover {
   text-decoration: underline;
   color: var(--color-company);
+}
+
+/* Crédito fixo no canto inferior direito do rodapé */
+.footer-credit {
+  position: absolute;
+  right: 120px;
+  bottom: var(--spacing-small);
+  font-size: var(--font-size-xxs);
+  color: var(--color-light-text-secondary);
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.footer-credit:hover {
+  color: var(--color-company);
+  text-decoration: underline;
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .footer-credit {
+    position: static;
+    display: block;
+    margin-top: var(--spacing-xs);
+    text-align: center;
+  }
 }
 
 

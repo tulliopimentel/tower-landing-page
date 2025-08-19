@@ -155,15 +155,15 @@
               Uma história de <span class="highlight">paixão</span>, superação e expertise em conteúdo digital.
             </h2>
            <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Desde crianças, sempre fomos <span class="highlight">apaixonados</span> pelo mundo do audiovisual. O que começou como curiosidade, brincadeira e fascínio por contar histórias através de imagens e sons, se transformou em um propósito de vida. Foi dessa paixão que nasceu a Tower Studios, em 2023, fundada por <span class="highlight">Gabriel Chinchilla e Guilherme Egreja.</span></p>
+          <p>
+            Desde o início, buscamos mais do que apenas produzir vídeos: queríamos criar <span class="highlight">experiências</span> visuais capazes de emocionar, inspirar e marcar pessoas. Nossa trajetória nos levou a trabalhar com grandes nomes da internet como Super Xandão, Victor Sarro, Gorgonoid, Anna Egreja, Haru, Tinowns, Mais Esports, e Tarcisio Yamamoto muitos outros criadores que marcaram gerações. Também tivemos a honra de atender comércios locais, pequenos criadores e grandes marcas de peso como Vivo, Snickers, Vicsa, entre tantas outras empresas que confiaram no nosso olhar criativo.
           </p>
           <p>
-            Curabitur pretium tincidunt lacus. Nulla gravida <span class="highlight">orci</span> a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh egestas ultricies. Aenean a dolor et sapien <span class="highlight">placerat</span> sagittis.
-          </p>
-          <p>
-            Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu <span class="highlight">libero</span> sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Ut varius tincidunt libero.
-          </p>
-          </div>
+            Em 2025, um novo capítulo se abriu com a chegada de <span class="highlight">Cristiano Zillig</span> como sócio, consolidando uma parceria que ampliou nossa visão e fortaleceu a Tower Studios. Hoje, nosso trabalho vai muito além de simplesmente gravar ou editar. Nós criamos campanhas completas, desenvolvemos conteúdos que conversam diretamente com o público e traduzimos a essência de cada cliente em imagens que se destacam. Seja um vídeo publicitário, um documentário, um videoclipe, uma cobertura de evento ou até mesmo conteúdos para redes sociais, nossa missão é sempre a mesma: transformar ideias em algo que emocione, envolva e gere resultados reais.</p>
+          <p>Não importa se você é um microempreendedor querendo mostrar o seu negócio ao mundo, uma marca já consolidada, um criador de conteúdo buscando crescer ou alguém que deseja se destacar nas redes sociais — a Tower Studios é a produtora certa para <span class="highlight">transformar</span> sua visão em <span class="highlight">realidade</span>.</p>
+            <p>Acreditamos que o audiovisual é a linguagem que conecta sonhos, pessoas e histórias. E é por isso que dizemos com orgulho: na Tower Studios, cada projeto é mais do que trabalho — é a chance de criar algo inesquecível.</p>
+        </div>
         </div>
       </section>
 
@@ -267,6 +267,14 @@
       </div>
       <div class="footer-bottom">
         <p>© {{ new Date().getFullYear() }} Tower Studio. Todos os direitos reservados.</p>
+        <a
+          href="https://bartechsoftware.com.br/"
+          class="footer-credit"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Desenvolvido por Bartech"
+          title="Desenvolvido por Bartech"
+        >Desenvolvido por Bartech - @https://bartechsoftware.com.br/</a>
       </div>
     </footer>
     <a
