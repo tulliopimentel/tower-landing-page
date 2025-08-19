@@ -264,9 +264,6 @@
             <li><a href="#" target="_blank" rel="noopener noreferrer" aria-label="Link para o YouTube da Tower Studio"><i class="fab fa-youtube"></i> YouTube</a></li>
             </ul>
         </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© {{ new Date().getFullYear() }} Tower Studio. Todos os direitos reservados.</p>
         <a
           href="https://bartechsoftware.com.br/"
           class="footer-credit"
@@ -275,6 +272,9 @@
           aria-label="Desenvolvido por Bartech"
           title="Desenvolvido por Bartech"
         >Desenvolvido por Bartech - @https://bartechsoftware.com.br/</a>
+      </div>
+      <div class="footer-bottom">
+        <p>© {{ new Date().getFullYear() }} Tower Studio. Todos os direitos reservados.</p>
       </div>
     </footer>
     <a

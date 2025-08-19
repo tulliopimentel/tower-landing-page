@@ -1271,6 +1271,7 @@ body.no-scroll {
   margin: 0 auto;
   gap: var(--spacing-xxl);
   padding-bottom: var(--spacing-xxl);
+  position: relative;
 }
 
 .footer-brand,
@@ -1452,6 +1453,7 @@ body.no-scroll .sticky-cta-bar { display: none; }
   color: var(--color-light-text-secondary);
   text-decoration: none;
   opacity: 0.85;
+  pointer-events: auto;
 }
 
 .footer-credit:hover {
@@ -1462,10 +1464,14 @@ body.no-scroll .sticky-cta-bar { display: none; }
 
 @media (max-width: 768px) {
   .footer-credit {
-    position: static;
+    position: relative;
+    right: auto;
+    left: 0;
+    bottom: 0;
     display: block;
+    width: 100%;
     margin-top: var(--spacing-xs);
-    text-align: center;
+    text-align: end;
   }
 }
 
